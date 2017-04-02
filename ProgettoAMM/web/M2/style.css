@@ -1,0 +1,265 @@
+body{
+
+    background-color: #F4F1EC;
+    font: 17px/25px "Open Sans", Arial, sans-serif;
+    position: relative;
+    top: 95px;
+    
+}
+/*colore titoli e font*/
+h1{ 
+    padding: 0;
+    margin: 0;
+    margin-top: 10px;
+    color: #111111;
+    font: 35px/40px "Open Sans", Arial, sans-serif;
+    font-weight: bold;
+}
+
+h2{
+    color: #111111;
+    font: 25px/20px "Open Sans", Arial, sans-serif;
+    font-weight: bold;
+}
+
+h3{
+    color: #111111;
+    font: 15px/10px "Open Sans", Arial, sans-serif;
+    font-weight: bold;
+}
+
+/*link visitato*/
+a:link,a:visited{ 
+    font-size: 20px;
+    text-decoration: none;
+    color: #B71A0F;
+    
+}
+
+a:hover{ /*quando passo sopra con il muouse*/
+    font-weight: bold;
+    
+}
+
+/*menu*/
+nav{
+    height: 60px;
+    float: left;
+    text-align: center;
+   /* box-shadow: 0 0 10px rgba(0,0,0,0.2);*/
+}
+
+nav ol,nav ul,nav li{
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    display: inline-block;
+}
+
+nav li{
+    padding-left: 20px;
+    padding-right: 20px;
+    border-right: 2px solid #111111; 
+}
+
+nav li:last-child{
+    border-right: 0px solid #111111; 
+}
+
+.logout{
+    position: relative;
+    left: 220%;
+}
+
+header{
+    width: 100%;
+   /* height: 60px;*/
+    float: left;
+    font: 35px/50px "Open Sans", Arial, sans-serif;
+    background-color: #EFDAD7;
+    text-align: left;
+    margin-bottom: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    position: fixed;
+    top:0 !important;
+}
+
+#divBody{
+    margin: 0;
+    background-color: #F4F1EC;
+    padding: 0;
+    /*box-shadow: 0 0 10px rgba(0,0,0,0.2);*/
+}
+
+#title{
+    border-right: 2px solid #111111; 
+    float:left;
+    margin-left: 0%;
+    padding-right: 6px;
+    /*margin-right: 75%; */
+}
+
+/*login*/
+#formLogin{ /* box login*/
+    float: left;
+    width: 300px;
+    height: 200px;
+    background-color: #EFDAD7;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    margin-left: 35%;
+    margin-right: 35%;
+    margin-top: 15%;
+}
+
+label:after{
+    content: '\A';
+    white-space: pre;
+}
+
+.labelLog{
+    width: 58%; 
+}
+
+button{
+    text-align: center;
+    width: 59.4% !important;
+}
+
+#nomeLog,#passLog{
+   margin-bottom:5px !important;
+   
+}
+
+#contentLog{
+    position: relative;
+    top: 30px;
+    left: 20%;
+}
+
+#titleLog h2{
+    position: relative;
+    top: 100px;
+    left: 35%;
+    font: 45px "Open Sans",Arial,sans-serif;
+}
+
+#titleLog h2:before{
+    content: url('fotoLog.png');
+    position: relative;
+    top: 5px;
+    
+}
+
+/*profilo*/
+#formProfile{
+ 
+    width: 500px;
+    height: auto;
+    background-color: #EFDAD7;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    margin-left: 35%;
+    margin-right: 35%;
+    margin-bottom: 10%;
+}
+
+.labelProf{
+    width: 58%; 
+}
+
+#profile div{
+   margin-bottom:5px !important;
+   
+}
+
+#profile{
+    position: relative;
+    left: 20%;
+}
+
+/*bacheca*/
+
+#post img{
+    max-width: 400px;
+    max-height: 400px;
+}
+
+#post div{
+    width: 90%;
+    background-color: #EFDAD7;
+    padding-top: 10px;
+    border-bottom: 2px solid #aaaaaa;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+
+}
+
+#divHome,#laterale,#post{
+    float: left;
+}
+
+#laterale{
+    background-color: #EFDAD7;
+    width:15%;
+    margin-left: 1%;
+    margin-right: 4%;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    padding-left: 10px
+    
+}
+
+#divHome{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+#post{
+    width: 65%;
+    /*margin-right: 7%;*/
+}
+
+#divDesc title{
+   /* float:left;*/
+    width: 100%;
+}
+
+#divDesc description{
+    width: 100%;
+    /*float: left;*/
+    background-color:#EFDAD7;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+#divDesc description h2, description h3{
+    float: left;
+}
+
+.profilePic {
+    width: 60px;
+    height: auto;
+    overflow: hidden;
+    position: relative;
+    top: 5px;
+    left: 5px;
+}
+
+#profile textArea:focus{
+    outline: none;
+    border-color: #22bb22;
+    box-shadow: 0 0 10px #22bb22;
+}
+
+#profile input:focus{
+    outline: none;
+    border-color: #22bb22;
+    box-shadow: 0 0 10px #22bb22;
+}

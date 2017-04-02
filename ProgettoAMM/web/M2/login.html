@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<html>
+   
+    <head>
+        <title>Nerdbook</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="Martina Lisci">
+	<meta name="keywords" content="cerca i tuoi amici">
+        <link rel="stylesheet" type="text/css" href="style.css" media="screen">
+    </head>
+    <body>
+    
+        <header>
+            <div id="title">
+                <h1>Login</h1>
+            </div>
+            <nav>
+            <ul>
+                <li><a href="bacheca.html">Bacheca Personale</a></li>
+                <li><a href="descrizione.html">Descrizione</a></li>
+                <li><a href="profilo.html">Profilo Personale</a></li>
+            </ul>
+        </nav>
+        </header>
+        
+        <div id="divBody">
+            <div id="titleLog">
+                <h2>Nerdbook</h2>
+            </div>
+            
+            <div id="formLogin">
+                <form action="login.java" method="post">
+                    <div id="contentLog">
+                         <div id="nomeLog">
+                              <label class="labelLog" for="userName">Nome Utente</label>
+                              <input class="labelLog" type="text" name="userName" value="UserName" id="userName">
+                        </div>
+                        <div id="passLog">
+                            <label class="labelLog" for="password">Password</label>
+                            <input class="labelLog" type="password" name="password" value="password" id="password">
+                        </div>
+                         <button  class="labelLog" type="submit">Accedi</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
