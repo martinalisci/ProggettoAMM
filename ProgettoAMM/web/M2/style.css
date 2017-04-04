@@ -46,7 +46,6 @@ nav{
     height: 60px;
     float: left;
     text-align: center;
-   /* box-shadow: 0 0 10px rgba(0,0,0,0.2);*/
 }
 
 nav ol,nav ul,nav li{
@@ -71,10 +70,14 @@ nav li:last-child{
     left: 220%;
 }
 
+#logoutBacheca{
+    position: relative;
+    left:370.3%;
+}
+
 header{
     width: 100%;
-   /* height: 60px;*/
-    float: left;
+    /*float: left;*/
     font: 35px/50px "Open Sans", Arial, sans-serif;
     background-color: #EFDAD7;
     text-align: left;
@@ -82,25 +85,24 @@ header{
     box-shadow: 0 0 10px rgba(0,0,0,0.2);
     position: fixed;
     top:0 !important;
+    z-index: 20;
 }
 
 #divBody{
     margin: 0;
     background-color: #F4F1EC;
     padding: 0;
-    /*box-shadow: 0 0 10px rgba(0,0,0,0.2);*/
 }
 
 #title{
     border-right: 2px solid #111111; 
     float:left;
     margin-left: 0%;
-    padding-right: 6px;
-    /*margin-right: 75%; */
+    padding-right: 15px;
 }
 
 /*login*/
-#formLogin{ /* box login*/
+#formLogin{ 
     float: left;
     width: 300px;
     height: 200px;
@@ -112,7 +114,7 @@ header{
     box-shadow: 0 0 10px rgba(0,0,0,0.2);
     margin-left: 35%;
     margin-right: 35%;
-    margin-top: 15%;
+    margin-top: 70px;
 }
 
 label:after{
@@ -147,13 +149,6 @@ button{
     font: 45px "Open Sans",Arial,sans-serif;
 }
 
-#titleLog h2:before{
-    content: url('fotoLog.png');
-    position: relative;
-    top: 5px;
-    
-}
-
 /*profilo*/
 #formProfile{
  
@@ -162,8 +157,8 @@ button{
     background-color: #EFDAD7;
     padding-left: 5px;
     padding-right: 5px;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding-top: 25px;
+    padding-bottom: 25px;
     box-shadow: 0 0 10px rgba(0,0,0,0.2);
     margin-left: 35%;
     margin-right: 35%;
@@ -184,11 +179,37 @@ button{
     left: 20%;
 }
 
+.user{
+    display: inline-block;
+    position: relative;
+    left: 5px;
+    font: 22px "Open Sans",Arial,sans-serif;
+    bottom: 18px;
+}
+
+.profilePic {
+    width: 60px;
+    height: 60px;
+    overflow: hidden;
+}
+
+#profile textArea:focus{
+    outline: none;
+    border-color: #22bb22;
+    box-shadow: 0 0 10px #22bb22;
+}
+
+#profile input:focus{
+    outline: none;
+    border-color: #22bb22;
+    box-shadow: 0 0 10px #22bb22;
+}
+
 /*bacheca*/
 
 #post img{
-    max-width: 400px;
-    max-height: 400px;
+    max-width: auto;
+    max-height: 600px;
 }
 
 #post div{
@@ -216,50 +237,86 @@ button{
     
 }
 
+#groups{
+    margin-top: 50px;
+    padding-bottom: 10px;
+}
+
 #divHome{
-    margin: 0;
+    margin-top: 10px;
     padding: 0;
     width: 100%;
 }
 
 #post{
     width: 65%;
-    /*margin-right: 7%;*/
 }
 
 #divDesc title{
-   /* float:left;*/
     width: 100%;
 }
 
 #divDesc description{
     width: 100%;
-    /*float: left;*/
-    background-color:#EFDAD7;
-    box-shadow: 0 0 10px rgba(0,0,0,0.2);
 }
 
 #divDesc description h2, description h3{
     float: left;
+    margin-top: 10%;
+    background-color:#F4F1EC !important; 
 }
 
-.profilePic {
-    width: 60px;
-    height: auto;
-    overflow: hidden;
+#content1{
+    margin-top: 30px;
+}
+
+.headProf{
+    position: relative;
+    margin: 0;
+    padding: 22.4px;
+    width: 92.5% !important;
+    top: -5px;
+    left:5px;
+    right: 5px;
+    height: 60px;
+    border-bottom: 2px solid #aaaaaa !important;
+    box-shadow: 1px 1px 1px rgba(0,0,0,0.2) !important;
+    background-color: #E3B3AB !important;
+}
+
+.bodyProf{
+    border: none !important;
+    box-shadow: none !important;
+    position: relative;
+    left: 20px;
+}
+
+/*immagini decorative*/
+
+#titleLog h2:before{
+    content: url('fotoLog.png');
     position: relative;
     top: 5px;
-    left: 5px;
+    
 }
 
-#profile textArea:focus{
-    outline: none;
-    border-color: #22bb22;
-    box-shadow: 0 0 10px #22bb22;
+#groups h2:after{
+    content: url('add.png');
+    position: relative;
+    top: 5px;
+    left: 25px;
 }
 
-#profile input:focus{
-    outline: none;
-    border-color: #22bb22;
-    box-shadow: 0 0 10px #22bb22;
+#people h3:before{
+    content:url('user.png');
+    position: relative;
+    top: 3px;
+    left: -5px;
+} 
+
+#groups h3:before{
+    content: url('friends.png');
+    position: relative;
+    top: 5px;
+    left: -5px;
 }
