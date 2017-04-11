@@ -37,7 +37,8 @@ a:link,a:visited{
 }
 
 a:hover{ /*quando passo sopra con il muouse*/
-    font-weight: bold;
+   /* font-weight: bold;*/
+   text-decoration: underline;
     
 }
 
@@ -56,6 +57,7 @@ nav ol,nav ul,nav li{
 }
 
 nav li{
+    height: 60px;
     padding-left: 20px;
     padding-right: 20px;
     border-right: 2px solid #111111; 
@@ -67,17 +69,11 @@ nav li:last-child{
 
 .logout{
     position: relative;
-    left: 220%;
-}
-
-#logoutBacheca{
-    position: relative;
-    left:370.3%;
+    left: 700px;
 }
 
 header{
     width: 100%;
-    /*float: left;*/
     font: 35px/50px "Open Sans", Arial, sans-serif;
     background-color: #EFDAD7;
     text-align: left;
@@ -95,11 +91,17 @@ header{
 }
 
 #title{
+    height: 60px;
     border-right: 2px solid #111111; 
     float:left;
     margin-left: 0%;
     padding-right: 15px;
 }
+
+.active{
+   font-weight: bold;
+}
+
 
 /*login*/
 #formLogin{ 
@@ -115,6 +117,7 @@ header{
     margin-left: 35%;
     margin-right: 35%;
     margin-top: 70px;
+    margin-bottom: 5%;
 }
 
 label:after{
@@ -208,7 +211,7 @@ button{
 /*bacheca*/
 
 #post img{
-    max-width: auto;
+    max-width:850px;
     max-height: 600px;
 }
 
@@ -230,7 +233,7 @@ button{
 #laterale{
     background-color: #EFDAD7;
     width:15%;
-    margin-left: 1%;
+    margin-left: 5%;
     margin-right: 4%;
     box-shadow: 0 0 10px rgba(0,0,0,0.2);
     padding-left: 10px
@@ -291,7 +294,8 @@ button{
     left: 20px;
 }
 
-/*immagini decorative*/
+/*immagini decorative che fanno parte del sito e 
+non fanno parte dei contenuti dell'utente'*/
 
 #titleLog h2:before{
     content: url('fotoLog.png');
@@ -320,3 +324,101 @@ button{
     top: 5px;
     left: -5px;
 }
+
+/*schermi più grandi di 1024*/
+@media only screen and (max-width: 1024px)
+{
+    #posts{
+       /* width: 410px;
+        float: left;
+        margin-left: 5px;*/
+    }
+
+    #divBody{
+        width: 1024px;
+        margin-left: 0;
+        margin-right: 0;
+    }
+    /*bacheca*/
+    .headProf{
+        position:relative;
+        left: 0px;
+    }
+    
+    #titleLog h2{
+        position: relative;
+        top:8px;
+        bottom: 16px;
+    }
+    /*login*/
+    #formLogin{
+        width: 50%;
+        height: 250px;
+        margin-left: 35%;
+        margin-right: 25%;
+    }
+    
+    #contentLog {
+     position: relative;
+     top: 40px;
+     left: 20%;
+    }
+    
+    #nomeLog, #passLog{
+        margin-bottom: 4px !important;
+    }
+    
+    .logout
+    {
+        position: relative;
+        right: 20px;
+    }
+    
+    
+
+}
+
+/*grandezze minori uguali a 480*/
+/*
+@media only screen and (max-width: 480px)
+{
+    header #title{
+        font-size: 22px;
+    }
+
+    nav li{
+        display: block;
+        border: none;
+    }
+
+    #info{
+        width: auto;
+        padding: 5px;
+        font-size: 15px;
+        margin-bottom: 5px;
+        text-align: center;
+    }
+
+    #posts{
+        width: auto;
+    }
+
+    .post{
+        text-align: center;
+    }
+
+    #divBody, nav{
+        width: 410px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .user{
+        margin-bottom: 5px;
+        padding: 5px;
+        width: auto;
+        height: 160px;
+    }
+
+}
+*/
