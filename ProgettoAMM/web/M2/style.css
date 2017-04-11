@@ -67,10 +67,6 @@ nav li:last-child{
     border-right: 0px solid #111111; 
 }
 
-.logout{
-    position: relative;
-    left: 700px;
-}
 
 header{
     width: 100%;
