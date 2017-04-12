@@ -103,8 +103,8 @@ header{
 
 /*login*/
 #formLogin{ 
-    float: left;
-    width: 300px;
+   
+    width: 30%;
     height: 200px;
     background-color: #EFDAD7;
     padding-left: 5px;
@@ -143,11 +143,11 @@ button{
     left: 20%;
 }
 
+#titleLog{
+    text-align: center;
+}
+
 #titleLog h2{
-    
-    position: relative;
-    top: 100px;
-    left: 35%;
     font: 45px "Open Sans",Arial,sans-serif;
 }
 
@@ -293,38 +293,8 @@ button{
     left: 20px;
 }
 
-/*immagini decorative che fanno parte del sito e 
-non fanno parte dei contenuti dell'utente*/
 
-#titleLog h2:before{
-    content: url('fotoLog.png');
-    position: relative;
-    top: 5px;
-    
-}
-
-#groups h2:after{
-    content: url('add.png');
-    position: relative;
-    top: 5px;
-    left: 25px;
-}
-
-#people h3:before{
-    content:url('user.png');
-    position: relative;
-    top: 3px;
-    left: -5px;
-} 
-
-#groups h3:before{
-    content: url('friends.png');
-    position: relative;
-    top: 5px;
-    left: -5px;
-}
-
-/*schermi più grandi di 1024*/
+/*schermi più piccoli di 1024*/
 @media only screen and (max-width: 1024px)
 {
     
@@ -335,6 +305,8 @@ non fanno parte dei contenuti dell'utente*/
     
     #titleLog{
         width: 100%;
+        margin-top: auto;
+        text-align: center;
     }
     
     #divBody{
@@ -355,19 +327,13 @@ non fanno parte dei contenuti dell'utente*/
         width: 97% !important;
     }
     
-    #titleLog h2{
-        position: relative;
-        top:18px;
-        bottom: 16px;
-        left: 43%;
-    }
-    
     /*login*/
     #formLogin{
         width: 50%;
-        height: 250px;
-        margin-left: 35%;
-        margin-right: 25%;
+        height: 230px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: auto;
     }
     
     #contentLog {
@@ -379,6 +345,14 @@ non fanno parte dei contenuti dell'utente*/
     #nomeLog, #passLog{
         margin-bottom: 4px !important;
     }
+    
+    /*profilo*/
+    #laterale{
+        width: 20%;
+    }
+    
+    
+    
 }
 
 /*grandezze minori uguali a 480*/
@@ -386,7 +360,7 @@ non fanno parte dei contenuti dell'utente*/
 @media only screen and (max-width: 480px){
 
     body{
-        width: 100%
+        width: 100%;
         margin: 0;
     }
     
@@ -430,16 +404,13 @@ non fanno parte dei contenuti dell'utente*/
     }
     
     #titleLog h2{
-        position: relative;
-        top: 20px;
-        left: 18%;
         font: 35px "Open Sans",Arial,sans-serif;
     }
     
     #formLogin{
         width: 65%;
-        margin-left:15.5%;
-        margin-top: 3%;
+        margin-left:auto;
+        margin-right: auto;
     }
     
     /*bacheca*/
@@ -453,6 +424,10 @@ non fanno parte dei contenuti dell'utente*/
     .headProf{
         width: 88% !important;
         height: 55px;
+    }
+    
+    .bodyProf{
+        width: 93% !important;
     }
     
     .profilePic{
@@ -487,6 +462,36 @@ non fanno parte dei contenuti dell'utente*/
     h3{
         line-height: normal;
     }
+
+}
+
+    /*immagini decorative che fanno parte del sito e 
+non fanno parte dei contenuti dell'utente*/
+
+#titleLog h2:before{
+    content: url('fotoLog.png');
+    position: relative;
+    top: 5px;
     
-    
+}
+
+#groups h2:after{
+    content: url('add.png');
+    position: relative;
+    top: 5px;
+    left: 25px;
+}
+
+#people h3:before{
+    content:url('user.png');
+    position: relative;
+    top: 3px;
+    left: -5px;
+} 
+
+#groups h3:before{
+    content: url('friends.png');
+    position: relative;
+    top: 5px;
+    left: -5px;
 }
