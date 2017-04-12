@@ -68,6 +68,7 @@ nav li:last-child{
 }
 
 
+
 header{
     width: 100%;
     font: 35px/50px "Open Sans", Arial, sans-serif;
@@ -291,7 +292,7 @@ button{
 }
 
 /*immagini decorative che fanno parte del sito e 
-non fanno parte dei contenuti dell'utente'*/
+non fanno parte dei contenuti dell'utente*/
 
 #titleLog h2:before{
     content: url('fotoLog.png');
@@ -324,12 +325,11 @@ non fanno parte dei contenuti dell'utente'*/
 /*schermi più grandi di 1024*/
 @media only screen and (max-width: 1024px)
 {
-    #posts{
-       /* width: 410px;
-        float: left;
-        margin-left: 5px;*/
+    
+    body{
+        margin:0;
     }
-
+    
     #divBody{
         width: 1024px;
         margin-left: 0;
@@ -343,9 +343,11 @@ non fanno parte dei contenuti dell'utente'*/
     
     #titleLog h2{
         position: relative;
-        top:8px;
+        top:18px;
         bottom: 16px;
+        left: 43%;
     }
+    
     /*login*/
     #formLogin{
         width: 50%;
@@ -363,58 +365,108 @@ non fanno parte dei contenuti dell'utente'*/
     #nomeLog, #passLog{
         margin-bottom: 4px !important;
     }
-    
-    .logout
-    {
-        position: relative;
-        right: 20px;
-    }
-    
-    
-
 }
 
 /*grandezze minori uguali a 480*/
-/*
-@media only screen and (max-width: 480px)
-{
-    header #title{
-        font-size: 22px;
-    }
 
-    nav li{
-        display: block;
-        border: none;
-    }
+@media only screen and (max-width: 480px){
 
-    #info{
+    body{
+        margin: 0;
+    }
+    
+    #post{
         width: auto;
-        padding: 5px;
-        font-size: 15px;
-        margin-bottom: 5px;
-        text-align: center;
-    }
-
-    #posts{
-        width: auto;
-    }
-
-    .post{
-        text-align: center;
     }
 
     #divBody, nav{
         width: 410px;
-        margin-left: auto;
-        margin-right: auto;
+        margin-left: 0;
+        margin-right: 0;
     }
-
+    
+    #title{
+        visibility: hidden;
+        width: 0;
+        height: 0;
+        margin: 0;
+        padding: 0;
+    }
+    
+    #laterale{
+        visibility: hidden;
+        width: 0;
+    }
+    
+    #formProfile{
+        margin-left: 4.3%;
+        width: 90%; 
+    }
+    
+    #profile{
+        position: relative;
+        left: 13%;
+    }
+    
+    #nav li{
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+    
+    #titleLog h2{
+        position: relative;
+        top: 20px;
+        left: 18%;
+        font: 35px "Open Sans",Arial,sans-serif;
+    }
+    
+    #formLogin{
+        width: 65%;
+        margin-left:15.5%;
+        margin-top: 3%;
+    }
+    
+    /*bacheca*/
+    
+    #post img{
+    max-width: 90%;
+    max-height: 70%;
+    overflow: hidden;
+    }
+    
+    .headProf{
+        width: 83% !important;
+        height: 55px;
+    }
+    
+    .profilePic{
+        width: 50px;
+        height: 50px;
+        overflow: hidden;
+    }
+    
     .user{
-        margin-bottom: 5px;
-        padding: 5px;
-        width: auto;
-        height: 160px;
+        bottom: 5px;
     }
-
+    
+    /*descrizione*/
+    #desc{
+        height: auto;
+    }
+    
+    #desc li{
+        height: 45px;
+        border-right: none;
+       border-bottom: 2px solid grey;
+    }
+    
+    #desc ol, #desc li{
+        display: block !important;
+    }
+    
+    #description{
+        margin-top: 150px;
+    }
+    
+    
 }
-*/
