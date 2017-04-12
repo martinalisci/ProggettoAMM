@@ -63,12 +63,6 @@ nav li{
     border-right: 2px solid #111111; 
 }
 
-nav li:last-child{
-    border-right: 0px solid #111111; 
-}
-
-
-
 header{
     width: 100%;
     font: 35px/50px "Open Sans", Arial, sans-serif;
@@ -79,6 +73,11 @@ header{
     position: fixed;
     top:0 !important;
     z-index: 20;
+}
+
+.logout{
+    float: right;
+    margin-right: 3%;
 }
 
 #divBody{
@@ -98,6 +97,10 @@ header{
 
 .active{
    font-weight: bold;
+}
+
+h3{
+    line-height: normal;
 }
 
 
@@ -154,7 +157,7 @@ button{
 /*profilo*/
 #formProfile{
  
-    width: 500px;
+    width: 60%;
     height: auto;
     background-color: #EFDAD7;
     padding-left: 5px;
@@ -162,8 +165,8 @@ button{
     padding-top: 25px;
     padding-bottom: 25px;
     box-shadow: 0 0 10px rgba(0,0,0,0.2);
-    margin-left: 35%;
-    margin-right: 35%;
+    margin-left: 27%;
+    margin-right: auto;
     margin-bottom: 10%;
 }
 
@@ -232,8 +235,8 @@ button{
 #laterale{
     background-color: #EFDAD7;
     width:15%;
-    margin-left: 5%;
-    margin-right: 4%;
+    margin-left: 2%;
+    margin-right: auto;
     box-shadow: 0 0 10px rgba(0,0,0,0.2);
     padding-left: 10px
     
@@ -273,13 +276,9 @@ button{
 }
 
 .headProf{
-   /* position: relative;*/
     margin: 0;
     padding-left: 22.4px;
     width: 92.5% !important;
-    /*top: -5px;
-    left:5px;
-    right: 5px;*/
     height: 60px;
     border-bottom: 2px solid #aaaaaa !important;
     box-shadow: 1px 1px 1px rgba(0,0,0,0.2) !important;
@@ -293,8 +292,15 @@ button{
     left: 20px;
 }
 
+#navLog li:last-child{
+        border: none;
+}
 
-/*schermi più piccoli di 1024*/
+#desc li:last-child{
+        border:none;
+    }
+
+/*schermi più piccoli di 1024, misura intermedia*/
 @media only screen and (max-width: 1024px)
 {
     
@@ -351,9 +357,24 @@ button{
         width: 20%;
     }
     
+    #divDesc #title,#divDesc{
+        visibility:hidden;
+        width:0%;
+        height:0%;
+        margin: 0;
+        
+    }
     
+    header{
+        height:60px;
+    }
     
+    #desc{
+        text-align:left;
+    }
 }
+    
+
 
 /*grandezze minori uguali a 480*/
 
@@ -364,6 +385,9 @@ button{
         margin: 0;
     }
     
+    header{
+        height:auto;
+    }
     
     #post{
         width: 87%;
@@ -448,7 +472,7 @@ button{
     #desc li{
         height: 45px;
         border-right: none;
-       border-bottom: 2px solid grey;
+        border-bottom: 2px solid grey;
     }
     
     #desc ol, #desc li{
@@ -456,12 +480,36 @@ button{
     }
     
     #description{
-        margin-top: 150px;
+        margin-top: 170px;
     }
     
     h3{
         line-height: normal;
     }
+    
+    .logout{
+        float: left;
+        margin-left: 3%;
+    }
+    
+    nav{
+        width: 70%;
+    }
+    
+    #navLog, #desc{
+        width: 100%;
+    }
+    
+    #desc{
+        text-align:center;
+    }
+    
+    #navLog li{
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    
+    
 
 }
 
