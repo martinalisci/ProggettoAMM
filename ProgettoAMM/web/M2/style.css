@@ -82,6 +82,7 @@ header{
 }
 
 #divBody{
+    width: 100%;
     margin: 0;
     background-color: #F4F1EC;
     padding: 0;
@@ -143,6 +144,7 @@ button{
 }
 
 #titleLog h2{
+    
     position: relative;
     top: 100px;
     left: 35%;
@@ -271,13 +273,13 @@ button{
 }
 
 .headProf{
-    position: relative;
+   /* position: relative;*/
     margin: 0;
-    padding: 22.4px;
+    padding-left: 22.4px;
     width: 92.5% !important;
-    top: -5px;
+    /*top: -5px;
     left:5px;
-    right: 5px;
+    right: 5px;*/
     height: 60px;
     border-bottom: 2px solid #aaaaaa !important;
     box-shadow: 1px 1px 1px rgba(0,0,0,0.2) !important;
@@ -328,17 +330,29 @@ non fanno parte dei contenuti dell'utente*/
     
     body{
         margin:0;
+        width: 100%;
+    }
+    
+    #titleLog{
+        width: 100%;
     }
     
     #divBody{
-        width: 1024px;
+        width: 100%;
         margin-left: 0;
         margin-right: 0;
     }
     /*bacheca*/
     .headProf{
-        position:relative;
-        left: 0px;
+       width: 96% !important;
+    }
+    
+    #post div{
+        width: 100%;
+    }
+    
+    .bodyProf{
+        width: 97% !important;
     }
     
     #titleLog h2{
@@ -372,15 +386,17 @@ non fanno parte dei contenuti dell'utente*/
 @media only screen and (max-width: 480px){
 
     body{
+        width: 100%
         margin: 0;
     }
     
+    
     #post{
-        width: auto;
+        width: 87%;
     }
 
     #divBody, nav{
-        width: 410px;
+        width: 100%;
         margin-left: 0;
         margin-right: 0;
     }
@@ -435,7 +451,7 @@ non fanno parte dei contenuti dell'utente*/
     }
     
     .headProf{
-        width: 83% !important;
+        width: 88% !important;
         height: 55px;
     }
     
@@ -466,6 +482,10 @@ non fanno parte dei contenuti dell'utente*/
     
     #description{
         margin-top: 150px;
+    }
+    
+    h3{
+        line-height: normal;
     }
     
     
