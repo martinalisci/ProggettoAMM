@@ -42,13 +42,13 @@
                 <div id="laterale">
                     <div id="people">
                         <h2>Persone</h2>
-                        <c:forEach var="utente" items="${utenti}">
+                        <c:forEach var="user" items="${utenti}">
                             <h3>${user.nome}</h3>
                         </c:forEach>
                     </div>
                     <div id="groups">
                         <h2>Gruppi</h2>
-                        <c:forEach var="gruppo" items="${gruppi}">
+                        <c:forEach var="group" items="${gruppi}">
                             <h3>${group.nome}</h3>
                         </c:forEach>
                     </div>

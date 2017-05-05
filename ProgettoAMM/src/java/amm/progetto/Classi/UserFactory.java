@@ -89,6 +89,10 @@ public class UserFactory {
         return -1;
     }
     
+    public ArrayList getListaUtenti(){
+        return listaUtenti;
+    }
+    
     
     
 }

@@ -61,7 +61,10 @@ public class Bacheca extends HttpServlet {
                 request.setAttribute("posts",posts);
                 ArrayList<Group> gruppi = GroupFactory.getInstance().getGruppoByMembro(user); 
                 request.setAttribute("gruppi",gruppi);
+                ArrayList<User> utenti = UserFactory.getInstance().getListaUtenti();
+                request.setAttribute("utenti",utenti);
                 request.getRequestDispatcher("bacheca.jsp").forward(request, response);
+                
 
             }
         }
