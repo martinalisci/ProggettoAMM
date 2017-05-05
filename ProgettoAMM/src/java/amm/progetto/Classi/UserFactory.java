@@ -79,6 +79,16 @@ public class UserFactory {
         return userList;
     }
     
+    public int getIdByUserAndPassword(String username, String password){
+        
+        for(User utente : this.listaUtenti){
+            if(utente.getNome().equals(username) && utente.getPassword().equals(password)){
+                return utente.getId();
+            }
+        }
+        return -1;
+    }
+    
     
     
 }

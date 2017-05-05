@@ -18,29 +18,32 @@
 
     <body>
         <c:set var="title" value="Login" scope="request"/>
-        <jsp:include page="header.jsp"/>
-        
+        <header>
+            <div id="title">
+                <h1>Login</h1>
+            </div>
+        </header>
         <div id="divBody">
-            <div id="formLogin">
-                
+            <div id="formLogin">  
                 <c:if test="${invalidData == true}">
                     <div id="invalidDataWarning">I dati inseriti non sono corretti</div>
                 </c:if>
                 
                 <form action="Login" method="post">
-                    <div>
-                        <label for="userName">UserName</label>
-                        <input type="text" name="username" id="userName">
+                     <div id="contentLog">
+                         <div id="nomeLog">
+                              <label class="labelLog" for="userName">Nome Utente</label>
+                              <input class="labelLog" type="text" name="userName" value="UserName" id="userName">
+                        </div>
+                        <div id="passLog">
+                            <label class="labelLog" for="password">Password</label>
+                            <input class="labelLog" type="password" name="password" value="password" id="password">
+                        </div>
+                         <button  class="labelLog" type="submit">Accedi</button>
                     </div>
-                    <div>
-                        <label for="userPass">Password</label>
-                        <input type="password" name="password" id="userPass">
-                    </div>
-                    <button type="submit">Invia</button>
                 </form>
             </div>
         </div>
-        
     </body>
 </html>
 

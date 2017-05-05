@@ -5,12 +5,13 @@
  */
 package amm.progetto;
 
+import amm.progetto.Classi.UserFactory;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -30,17 +31,59 @@ public class Login extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet Login</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet Login at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+         HttpSession session = request.getSession();
+        
+        //Se è impostato il parametro GET logout, distrugge la sessione
+        if(request.getParameter("logout")!=null){
+            session.invalidate();
+            request.getRequestDispatcher("loginForm.jsp").forward(request, response);
+            return;
+        }
+        
+        //Se esiste un attributo di sessione loggedIn e questo vale true
+        //(Utente già loggato)
+        if (session.getAttribute("loggedIn") != null &&
+            session.getAttribute("loggedIn").equals(true)) {
+
+            request.getRequestDispatcher("Bacheca").forward(request, response);
+            return;
+        
+        //Se l'utente non è loggato...
+        } else {
+            String username = request.getParameter("username");
+            String password = request.getParameter("password");
+        
+            
+            /*
+            Nelle slide viste a lezione è presente una versione leggermente 
+            differente che utilizza un metodo this.login il quale restituisce 
+            true se la coppia user/pass è valida, false altrimenti.
+            L'implementazione di GaTeender prevede che se sono presenti
+            i parametri post username e password (inviati dal loginForm.jsp)
+            allora verifica che questa coppia corrisponda a un gatto registrato 
+            (id!=-1) e in caso positivo imposta :
+            -attributo di sessione loggedIn a true
+            -attributo di sessione loggedUserId contenente lo userID dell'utente 
+             loggato
+            */
+            if (username != null && password != null){
+                int loggedUserID = UserFactory.getInstance().getIdByUserAndPassword(username, password);
+                
+                //se l'utente è valido...
+                if(loggedUserID != -1){
+                    session.setAttribute("loggedIn", true);
+                    session.setAttribute("loggedUserID", loggedUserID);
+                    
+                    request.getRequestDispatcher("Bacheca").forward(request, response);
+                    return;
+                } else { //altrimenti se la coppia user/pass non è valida (id==-1)
+                    
+                    //ritorno al form del login informandolo che i dati non sono validi
+                    request.setAttribute("invalidData", true);
+                    request.getRequestDispatcher("loginForm.jsp").forward(request, response);
+                    return;
+                }
+            }
         }
     }
 

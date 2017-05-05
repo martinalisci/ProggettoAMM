@@ -22,10 +22,6 @@
         <c:set var="title" value="Bacheca Personale" scope="request"/>
         <jsp:include page="header.jsp"/>
 
-        <!--Barra di navigazione tra le pagine del sito-->
-        <c:set var="page" value="bacheca" scope="request"/>
-        <jsp:include page="nav.jsp"/>
-
         
         <div id="divBody">
             <div id="divHome">
@@ -49,7 +45,7 @@
                 
                 <div id="posts">
                   
-                    <c:forEach var="post" item="${posts}">
+                    <c:forEach var="post" items="${posts}">
                         <div class="headProf">
                             <img class="profilePic" alt="foto utente src="${user.urlFotoProfilo}">
                             <h3 class="user">${user.nome}</h3>

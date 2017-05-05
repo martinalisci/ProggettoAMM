@@ -15,6 +15,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -34,26 +35,34 @@ public class Bacheca extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        HttpSession session = request.getSession(false);
         
-        String utente = request.getParameter("user");
-        int utenteID;
-        if(utente!=null){
-            utenteID = Integer.parseInt(utente);
-        } else{
-            utenteID = 0;
-        }
-        
-        User user = UserFactory.getInstance().getUserById(utenteID);
-        if (user!=null){
-            request.setAttribute("user",user);
-            List<Post> posts = PostFactory.getInstance().getPostByUser(user);
-            request.setAttribute("posts",posts);
-            request.getRequestDispatcher("bacheca.jsp").forward(request, response);
+        //se la sessione esiste ed esiste anche l'attributo loggedIn impostato a true
+        if(session!=null && 
+           session.getAttribute("loggedIn")!=null &&
+           session.getAttribute("loggedIn").equals(true)){
             
-        }else{
-            response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+            String utente = request.getParameter("user");
+            int utenteID;
+            if(utente!=null){
+                utenteID = Integer.parseInt(utente);
+            } else{
+                Integer loggedUserID = (Integer)session.getAttribute("loggedUserID");
+                utenteID = loggedUserID;
+            }
+
+            User user = UserFactory.getInstance().getUserById(utenteID);
+            if (user!=null){
+                request.setAttribute("user",user);
+                List<Post> posts = PostFactory.getInstance().getPostByUser(user);
+                request.setAttribute("posts",posts);
+                request.getRequestDispatcher("bacheca.jsp").forward(request, response);
+
+            }
         }
-        
+        else{
+                response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+            }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
