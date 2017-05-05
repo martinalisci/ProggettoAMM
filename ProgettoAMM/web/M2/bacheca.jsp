@@ -20,7 +20,20 @@
  
          <!--header contenente in titolo della pagina-->
         <c:set var="title" value="Bacheca Personale" scope="request"/>
-        <jsp:include page="header.jsp"/>
+        <header>
+            <div id="title">
+                <h1>Nerdbook</h1>
+            </div>
+            
+            <nav>
+                <ul>
+                <li><a class="active" href="bacheca.html">Bacheca</a></li>
+                <li><a href="profilo.html">Profilo</a></li>
+                
+            </ul>
+        </nav>
+            <div class="logout"><a href="login.html">Logout</a></div>
+        </header>
 
         
         <div id="divBody">
