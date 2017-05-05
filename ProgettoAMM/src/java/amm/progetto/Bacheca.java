@@ -5,11 +5,14 @@
  */
 package amm.progetto;
 
+import amm.progetto.Classi.Group;
+import amm.progetto.Classi.GroupFactory;
 import amm.progetto.Classi.Post;
 import amm.progetto.Classi.PostFactory;
 import amm.progetto.Classi.User;
 import amm.progetto.Classi.UserFactory;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -56,6 +59,8 @@ public class Bacheca extends HttpServlet {
                 request.setAttribute("user",user);
                 List<Post> posts = PostFactory.getInstance().getPostByUser(user);
                 request.setAttribute("posts",posts);
+                ArrayList<Group> gruppi = GroupFactory.getInstance().getGruppoByMembro(user); 
+                request.setAttribute("gruppi",gruppi);
                 request.getRequestDispatcher("bacheca.jsp").forward(request, response);
 
             }

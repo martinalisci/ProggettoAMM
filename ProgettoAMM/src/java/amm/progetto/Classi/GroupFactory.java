@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package amm.progetto.Classi;
-
 import java.util.ArrayList;
 
 /**
@@ -14,7 +13,7 @@ import java.util.ArrayList;
 public class GroupFactory {
     private static GroupFactory singleton;
     
-    private static GroupFactory getInstance(){
+    public static GroupFactory getInstance(){
         if(singleton==null){
             singleton = new GroupFactory();
         }
@@ -27,10 +26,14 @@ public class GroupFactory {
         Group gruppo1 = new Group();
         gruppo1.setNome("Mongolfieristi");
         gruppo1.setId(0);
+        gruppo1.membri.add(0);
+        gruppo1.membri.add(2);
         
         Group gruppo2 = new Group();
         gruppo2.setNome("Ritardatari");
         gruppo2.setId(1);
+        gruppo2.membri.add(1);
+        gruppo2.membri.add(2);
         
         listaGruppi.add(gruppo1);
         listaGruppi.add(gruppo2);
@@ -51,6 +54,18 @@ public class GroupFactory {
         for(Group gruppo : listaGruppi){
             if((gruppo.getNome()).equals(nome)){
                 groupList.add(gruppo);
+            }
+        }
+        return groupList;
+    }
+    
+    public ArrayList getGruppoByMembro(User utente){
+        ArrayList<Group> groupList = new ArrayList();
+        for(Group gruppo : listaGruppi){
+            for(Integer n : gruppo.membri){
+                if(utente.getId() == n){
+                    groupList.add(gruppo);
+                }
             }
         }
         return groupList;

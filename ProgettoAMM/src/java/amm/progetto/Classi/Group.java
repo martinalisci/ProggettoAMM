@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package amm.progetto.Classi;
+import java.util.ArrayList;
 
 /**
  *
@@ -14,11 +15,13 @@ public class Group {
     private int id;
     private String nome;
     private String urlFoto;
+    ArrayList<Integer> membri;
     
     public Group(){
         id = 0;
         nome = "";
         urlFoto = "";
+        membri = new ArrayList<>();
     }
     
     /**

@@ -42,17 +42,16 @@
                 <div id="laterale">
                     <div id="people">
                         <h2>Persone</h2>
-                        <h3>Pinco Pallino</h3>
-                        <h3>Riccardo Rossi</h3>
-                        <h3>Mario Bianchi</h3>
+                        <c:forEach var="utente" items="${utenti}">
+                            <h3>${user.nome}</h3>
+                        </c:forEach>
                     </div>
                     <div id="groups">
                         <h2>Gruppi</h2>
-                        <h3>Mongolfieristi</h3>
-                        <h3>Ritardatari</h3>
+                        <c:forEach var="gruppo" items="${gruppi}">
+                            <h3>${group.nome}</h3>
+                        </c:forEach>
                     </div>
-                    
-                    
                 </div>
                 
                 
