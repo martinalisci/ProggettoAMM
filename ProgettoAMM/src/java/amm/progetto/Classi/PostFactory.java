@@ -30,20 +30,20 @@ public class PostFactory {
         
         Post post1 = new Post();
         post1.setContenuto("bla bla bla");
-        post1.setId(0);
-        post1.setUtente(userFactory.getUserById(0));
+        post1.setId_destinatario(0);
+        post1.setId_autore(0);
         post1.setPostType(Post.Type.TEXT);
         
         Post post2 = new Post();
         post2.setContenuto("img/cibo.jpg");
-        post2.setId(1);
-        post2.setUtente(userFactory.getUserById(1));
+        post2.setId_destinatario(1);
+        post2.setId_autore(1);
         post2.setPostType(Post.Type.IMAGE);
         
         Post post3 = new Post();
         post3.setContenuto("http://it.wikihow.com/Creare-un-Cappello");
-        post3.setId(2);
-        post3.setUtente(userFactory.getUserById(2));
+        post3.setId_destinatario(2);
+        post3.setId_autore(2);
         post3.setPostType(Post.Type.TEXT);
         
         listaPost.add(post1);
@@ -51,23 +51,28 @@ public class PostFactory {
         listaPost.add(post3);
     }
     
-    public Post getPostById(int id){
-        for(Post post : listaPost){
-            if(post.getId() == id){
-                return post;
-            }
-        }
-        return null;
-    }
-    
-    public ArrayList getPostByUser(User utente){
+    public ArrayList<Post> getPostById_destinatario(int id){
         ArrayList<Post> postList = new ArrayList();
         for(Post post : listaPost){
-            if(post.getUtente().equals(utente) ){
-                postList.add(post);
+            if(post.getId_destinatario() == id){
+               postList.add(post);
             }
         }
         return postList;
+    }
+    
+    public ArrayList <Post> getPostById_autore(int id){
+        ArrayList<Post> postList = new ArrayList();
+        for(Post post : listaPost){
+            if(post.getId_autore() == id){
+               postList.add(post);
+            }
+        }
+        return postList;
+    }
+    
+    public void addPost(Post post){
+        listaPost.add(post);
     }
     
     public void setConnectionString(String s){

@@ -5,13 +5,10 @@
  */
 package amm.progetto;
 
-import amm.progetto.Classi.GroupFactory;
-import amm.progetto.Classi.PostFactory;
+
 import amm.progetto.Classi.User;
 import amm.progetto.Classi.UserFactory;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -97,7 +94,7 @@ public class Login extends HttpServlet {
                        (user.getFrase()).equals("")){
                     
                         request.getRequestDispatcher("profilo.jsp").forward(request, response);
-                        /*return;*/
+                      
                     }
                     
                     request.getRequestDispatcher("bacheca.jsp").forward(request, response);

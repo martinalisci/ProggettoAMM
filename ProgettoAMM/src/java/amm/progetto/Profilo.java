@@ -30,11 +30,13 @@ public class Profilo extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession(false);
         
+        
         //se l'utente è loggato accede al form profilo
         if(session!=null && 
             session.getAttribute("loggedIn")!=null &&
             session.getAttribute("loggedIn").equals(true)){
-           
+            
+            
             //si procura l'utente
             String utente = request.getParameter("user");
             int utenteID;
@@ -53,8 +55,10 @@ public class Profilo extends HttpServlet {
                 request.setAttribute("gruppi",gruppi);
                 ArrayList<User> utenti = UserFactory.getInstance().getListaUtenti();
                 request.setAttribute("utenti",utenti);
+                
                 request.setAttribute("inviato", true);
                 request.getRequestDispatcher("profilo.jsp").forward(request, response);
+               
             }
         }
         else{ //se l'utente non è loggato l'utente riceve un messaggio di errore
@@ -64,4 +68,44 @@ public class Profilo extends HttpServlet {
                 return;
             }    
     }
+    
+     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    /**
+     * Handles the HTTP <code>GET</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
+    }
+
+    /**
+     * Handles the HTTP <code>POST</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
+    }
+
+    /**
+     * Returns a short description of the servlet.
+     *
+     * @return a String containing servlet description
+     */
+    @Override
+    public String getServletInfo() {
+        return "Short description";
+    }// </editor-fold>
+
 }

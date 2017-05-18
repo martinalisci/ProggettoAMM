@@ -58,17 +58,17 @@ public class Bacheca extends HttpServlet {
             }
             
             User user = UserFactory.getInstance().getUserById(utenteID);
-            if (user!=null){ //se l'utente esiste
-   
-                //fa la barra laterale
+            if (user!=null){ //se l'utente esiste 
+                //fa la barra laterale e i post
                 request.setAttribute("user",user);
                 ArrayList<User> utenti = UserFactory.getInstance().getListaUtenti();
                 request.setAttribute("utenti",utenti);
                 ArrayList<Group> gruppi = GroupFactory.getInstance().getGruppoByMembro(user); 
                 request.setAttribute("gruppi",gruppi);
-                List<Post> posts = PostFactory.getInstance().getPostByUser(user);
+                ArrayList<Post> posts = PostFactory.getInstance().getPostById_destinatario(utenteID);
                 request.setAttribute("posts",posts);
                 request.getRequestDispatcher("bacheca.jsp").forward(request, response);
+                
             }
         }
         else{

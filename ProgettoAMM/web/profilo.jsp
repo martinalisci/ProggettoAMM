@@ -72,10 +72,16 @@
                             <button type="submit">Aggiorna</button>
                         </div>
                     </div>
-                </form>
-                <c:if test="${inviato == true}">
-                    <div id="invalidDataWarning">I dati sono stati inviati.</div>
-                </c:if>
+                    <c:if test="${inviato == true}">
+                        <h3>I dati sono stati inviati.</h3>
+                        <Nome : <%= request.getParameter("name")%>
+                        <p>Cognome : <%= request.getParameter("surname")%></p>
+                        <p>Frase di presentazione : <%= request.getParameter("sentence")%></p>
+                        <p>Immagine profilo : <%= request.getParameter("image")%></p>
+                        <p>Data di nascita : <%= request.getParameter("date")%></p>
+                        <p>Password : <%= request.getParameter("password")%></p>
+                    </c:if>
+                </form>  
             </div>    
         </div>
     </body>

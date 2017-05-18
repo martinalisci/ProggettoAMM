@@ -33,7 +33,7 @@ public class UserFactory {
         utente1.setUrlFotoProfilo("img/cappellaio.jpg");
         utente1.setId(0);
         utente1.setUsername("cappellaio");
-        utente1.setFrase("bla bla");
+        utente1.setFrase("");
         
         User utente2 = new User();
         utente2.setNome("Stregatto");
