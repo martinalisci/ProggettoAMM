@@ -212,12 +212,12 @@ button{
 
 /*bacheca*/
 
-#post img{
+#posts img{
     max-width:850px;
     max-height: 600px;
 }
 
-#post div{
+#posts div{
     width: 90%;
     background-color: #EFDAD7;
     padding-top: 10px;
@@ -228,7 +228,7 @@ button{
 
 }
 
-#divHome,#laterale,#post{
+#divHome,#laterale,#posts,#formCrea{
     float: left;
 }
 
@@ -253,7 +253,7 @@ button{
     width: 100%;
 }
 
-#post{
+#posts{
     width: 65%;
     margin-left: 5%;
 }
@@ -301,6 +301,48 @@ button{
 #desc li:last-child{
         border:none;
     }
+    
+#formCrea{
+    width: 57.8%;
+    margin-left: 5%;
+    height: auto;
+    background-color: #EFDAD7;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    margin-right: auto;
+    margin-bottom: 10px;
+
+}
+
+#formCrea div{
+    margin-left: 19%;
+    
+}
+
+#formCrea button{
+    width:27.5% !important;
+    text-align:center;
+    margin-left: 34.2%;
+}
+
+.labelCrea{
+    width: 58%;
+}
+
+#formCrea textArea:focus{
+    outline: none;
+    border-color: #22bb22;
+    box-shadow: 0 0 10px #22bb22;
+}
+
+#formCrea input:focus{
+    outline: none;
+    border-color: #22bb22;
+    box-shadow: 0 0 10px #22bb22;
+}
 
 /*schermi più piccoli di 1024, misura intermedia*/
 @media only screen and (max-width: 1024px)
@@ -327,7 +369,7 @@ button{
        width: 96% !important;
     }
     
-    #post div{
+    #posts div{
         width: 100%;
     }
     
@@ -511,7 +553,13 @@ button{
         padding-right: 10px;
     }
     
+    #formCrea div{
+        margin-left: 2%;
+    }
     
+    #formCrea button{
+        margin-left: 5%;
+    }
 
 }
 

@@ -15,7 +15,7 @@ public class Group {
     private int id;
     private String nome;
     private String urlFoto;
-    ArrayList<Integer> membri;
+    private ArrayList<Integer> membri;
     
     public Group(){
         id = 0;
@@ -66,6 +66,19 @@ public class Group {
         this.urlFoto = urlFoto;
     }
     
+     /**
+     * @return the membri
+     */
+    public ArrayList<Integer> getMembri() {
+        return membri;
+    }
+
+    /**
+     * @param membro the membri to set
+     */
+    public void setMembri(int membro) {
+        membri.add(membro);
+    }
     
     
 }

@@ -5,9 +5,15 @@
  */
 package amm.progetto;
 
+import amm.progetto.Classi.GroupFactory;
+import amm.progetto.Classi.PostFactory;
+import amm.progetto.Classi.User;
 import amm.progetto.Classi.UserFactory;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,6 +23,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author Martina
  */
+@WebServlet(urlPatterns = {"/login.html"})
+/*,loadOnStartup = 0*/
 public class Login extends HttpServlet {
 
     /**
@@ -28,6 +36,25 @@ public class Login extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+ /*   private static final String JDBC_DRIVER = "org.apache.derby.jdbc.EmbeddedDriver";
+    private static final String DB_CLEAN_PATH = "../../web/WEB-INF/db/ammdb";
+    private static final String DB_BUILD_PATH = "WEB-INF/db/ammdb";
+    
+    @Override
+
+    public void init(){
+       String dbConnection = "jdbc:derby:" + this.getServletContext().getRealPath("/") + DB_BUILD_PATH;
+       try {
+           Class.forName(JDBC_DRIVER);
+       } catch (ClassNotFoundException ex) {
+           Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+       }
+       UserFactory.getInstance().setConnectionString(dbConnection);
+       PostFactory.getInstance().setConnectionString(dbConnection);
+       GroupFactory.getInstance().setConnectionString(dbConnection);
+   }
+ */   
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -36,7 +63,7 @@ public class Login extends HttpServlet {
         //Se è impostato il parametro GET logout, distrugge la sessione
         if(request.getParameter("logout")!=null){
             session.invalidate();
-            request.getRequestDispatcher("loginForm.jsp").forward(request, response);
+            request.getRequestDispatcher("login.jsp").forward(request, response);
             return;
         }
         
@@ -45,7 +72,7 @@ public class Login extends HttpServlet {
         if (session.getAttribute("loggedIn") != null &&
             session.getAttribute("loggedIn").equals(true)) {
 
-            request.getRequestDispatcher("Bacheca").forward(request, response);
+            request.getRequestDispatcher("bacheca.jsp").forward(request, response);
             return;
         
         //Se l'utente non è loggato...
@@ -53,19 +80,6 @@ public class Login extends HttpServlet {
             String username = request.getParameter("username");
             String password = request.getParameter("password");
         
-            
-            /*
-            Nelle slide viste a lezione è presente una versione leggermente 
-            differente che utilizza un metodo this.login il quale restituisce 
-            true se la coppia user/pass è valida, false altrimenti.
-            L'implementazione di GaTeender prevede che se sono presenti
-            i parametri post username e password (inviati dal loginForm.jsp)
-            allora verifica che questa coppia corrisponda a un gatto registrato 
-            (id!=-1) e in caso positivo imposta :
-            -attributo di sessione loggedIn a true
-            -attributo di sessione loggedUserId contenente lo userID dell'utente 
-             loggato
-            */
             if (username != null && password != null){
                 int loggedUserID = UserFactory.getInstance().getIdByUserAndPassword(username, password);
                 
@@ -74,13 +88,25 @@ public class Login extends HttpServlet {
                     session.setAttribute("loggedIn", true);
                     session.setAttribute("loggedUserID", loggedUserID);
                     
-                    request.getRequestDispatcher("Bacheca").forward(request, response);
+                    //se l'utente non ha settato nome cognome o foto va alla pagina dei dati
+                    User user = UserFactory.getInstance().getUserById(loggedUserID);
+                    
+                    if((user.getNome()).equals("") || 
+                       (user.getUrlFotoProfilo()).equals("") || 
+                       (user.getCognome()).equals("") ||
+                       (user.getFrase()).equals("")){
+                    
+                        request.getRequestDispatcher("profilo.jsp").forward(request, response);
+                        /*return;*/
+                    }
+                    
+                    request.getRequestDispatcher("bacheca.jsp").forward(request, response);
                     return;
                 } else { //altrimenti se la coppia user/pass non è valida (id==-1)
                     
                     //ritorno al form del login informandolo che i dati non sono validi
                     request.setAttribute("invalidData", true);
-                    request.getRequestDispatcher("loginForm.jsp").forward(request, response);
+                    request.getRequestDispatcher("login.jsp").forward(request, response);
                     return;
                 }
             }

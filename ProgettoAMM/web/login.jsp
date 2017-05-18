@@ -17,23 +17,30 @@
     </head>
 
     <body>
-        <c:set var="title" value="Login" scope="request"/>
+        
         <header>
-            <div id="title">
+            <div id="title" class="titoloLog">
                 <h1>Login</h1>
             </div>
         </header>
         <div id="divBody">
+            <div id="titleLog">
+                <h2>Nerdbook</h2>
+            </div>
             <div id="formLogin">  
                 <c:if test="${invalidData == true}">
                     <div id="invalidDataWarning">I dati inseriti non sono corretti</div>
+                </c:if>
+                    
+                <c:if test="${nonAutenticato == true}">
+                    <div id="nonAutenticato">L'utente non è autenticato</div>
                 </c:if>
                 
                 <form action="Login" method="post">
                      <div id="contentLog">
                          <div id="nomeLog">
                               <label class="labelLog" for="userName">Nome Utente</label>
-                              <input class="labelLog" type="text" name="userName" value="UserName" id="userName">
+                              <input class="labelLog" type="text" name="username" value="username" id="userName">
                         </div>
                         <div id="passLog">
                             <label class="labelLog" for="password">Password</label>

@@ -10,12 +10,30 @@ package amm.progetto.Classi;
  * @author Martina
  */
 public class User {
+
     
+ 
     private int id;
     private String nome;
     private String cognome;
     private String password;
     private String urlFotoProfilo;
+    private String username;
+    private String frase;
+    
+    /**
+     * @return the frase
+     */
+    public String getFrase() {
+        return frase;
+    }
+
+    /**
+     * @param frase the frase to set
+     */
+    public void setFrase(String frase) {
+        this.frase = frase;
+    }
 
     public User(){
         id = 0;
@@ -23,6 +41,22 @@ public class User {
         cognome = "";
         urlFotoProfilo = "";
         password = "";
+        username = "";
+        frase = "";
+    }
+    
+     /**
+     * @return the username
+     */
+    public String getUsername() {
+        return username;
+    }
+
+    /**
+     * @param username the username to set
+     */
+    public void setUsername(String username) {
+        this.username = username;
     }
     
     /**

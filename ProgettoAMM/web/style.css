@@ -1,0 +1,601 @@
+body{
+
+    background-color: #F4F1EC;
+    font: 17px/25px "Open Sans", Arial, sans-serif;
+    position: relative;
+    top: 95px;
+    
+}
+/*colore titoli e font*/
+h1{ 
+    padding: 0;
+    margin: 0;
+    margin-top: 10px;
+    color: #111111;
+    font: 35px/40px "Open Sans", Arial, sans-serif;
+    font-weight: bold;
+}
+
+h2{
+    color: #111111;
+    font: 25px/20px "Open Sans", Arial, sans-serif;
+    font-weight: bold;
+}
+
+h3{
+    color: #111111;
+    font: 15px/10px "Open Sans", Arial, sans-serif;
+    font-weight: bold;
+}
+
+/*link visitato*/
+a:link,a:visited{ 
+    font-size: 20px;
+    text-decoration: none;
+    color: #B71A0F;
+    
+}
+
+a:hover{ /*quando passo sopra con il muouse*/
+   /* font-weight: bold;*/
+   text-decoration: underline;
+    
+}
+
+/*menu*/
+nav{
+    height: 60px;
+    float: left;
+    text-align: center;
+}
+
+nav ol,nav ul,nav li{
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    display: inline-block;
+}
+
+nav li{
+    height: 60px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-right: 2px solid #111111; 
+}
+
+header{
+    width: 100%;
+    font: 35px/50px "Open Sans", Arial, sans-serif;
+    background-color: #EFDAD7;
+    text-align: left;
+    margin-bottom: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    position: fixed;
+    top:0 !important;
+    z-index: 20;
+}
+
+.logout{
+    float: right;
+    margin-right: 3%;
+}
+
+#divBody{
+    width: 100%;
+    margin: 0;
+    background-color: #F4F1EC;
+    padding: 0;
+}
+
+#title{
+    height: 60px;
+    border-right: 2px solid #111111; 
+    float:left;
+    margin-left: 0%;
+    padding-right: 15px;
+}
+
+.active{
+   font-weight: bold;
+}
+
+h3{
+    line-height: normal;
+}
+
+
+/*login*/
+#formLogin{ 
+   
+    width: 30%;
+    height: 200px;
+    background-color: #EFDAD7;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    margin-left: 35%;
+    margin-right: 35%;
+    margin-top: 70px;
+    margin-bottom: 5%;
+}
+
+label:after{
+    content: '\A';
+    white-space: pre;
+}
+
+.labelLog{
+    width: 58%; 
+}
+
+button{
+    text-align: center;
+    width: 59.4% !important;
+}
+
+#nomeLog,#passLog{
+   margin-bottom:5px !important;
+   
+}
+
+#contentLog{
+    position: relative;
+    top: 30px;
+    left: 20%;
+}
+
+#titleLog{
+    text-align: center;
+}
+
+#title.titoloLog{
+        border-right: none !important;
+    }
+
+#titleLog h2{
+    font: 45px "Open Sans",Arial,sans-serif;
+}
+
+/*profilo*/
+#formProfile{
+ 
+    width: 60%;
+    height: auto;
+    background-color: #EFDAD7;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    margin-left: 27%;
+    margin-right: auto;
+    margin-bottom: 10%;
+}
+
+.labelProf{
+    width: 58%; 
+}
+
+#profile div{
+   margin-bottom:5px !important;
+   
+}
+
+#profile{
+    position: relative;
+    left: 20%;
+}
+
+.user{
+    display: inline-block;
+    position: relative;
+    left: 5px;
+    font: 22px "Open Sans",Arial,sans-serif;
+    bottom: 18px;
+}
+
+.profilePic {
+    width: 60px;
+    height: 60px;
+    overflow: hidden;
+}
+
+#profile textArea:focus{
+    outline: none;
+    border-color: #22bb22;
+    box-shadow: 0 0 10px #22bb22;
+}
+
+#profile input:focus{
+    outline: none;
+    border-color: #22bb22;
+    box-shadow: 0 0 10px #22bb22;
+}
+
+/*bacheca*/
+
+#posts img{
+    max-width:850px;
+    max-height: 600px;
+}
+
+#posts div{
+    width: 90%;
+    background-color: #EFDAD7;
+    padding-top: 10px;
+    border-bottom: 2px solid #aaaaaa;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+
+}
+
+#divHome,#laterale,#posts,#formCrea{
+    float: left;
+}
+
+#laterale{
+    background-color: #EFDAD7;
+    width:15%;
+    margin-left: 2%;
+    margin-right: auto;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    padding-left: 10px
+    
+}
+
+#groups{
+    margin-top: 50px;
+    padding-bottom: 10px;
+}
+
+#divHome{
+    margin-top: 10px;
+    padding: 0;
+    width: 100%;
+}
+
+#posts{
+    width: 65%;
+    margin-left: 5%;
+}
+
+#divDesc title{
+    width: 100%;
+}
+
+
+#divDesc description{
+    width: 100%;
+}
+
+#divDesc description h2, description h3{
+    float: left;
+    margin-top: 10%;
+    background-color:#F4F1EC !important; 
+}
+
+#content1{
+    margin-top: 30px;
+}
+
+.headProf{
+    margin: 0;
+    padding-left: 22.4px;
+    width: 92.5% !important;
+    height: 60px;
+    border-bottom: 2px solid #aaaaaa !important;
+    box-shadow: 1px 1px 1px rgba(0,0,0,0.2) !important;
+    background-color: #E3B3AB !important;
+}
+
+.bodyProf{
+    border: none !important;
+    box-shadow: none !important;
+    position: relative;
+    left: 20px;
+}
+
+#navLog li:last-child{
+        border: none;
+}
+
+#desc li:last-child{
+        border:none;
+    }
+    
+#formCrea{
+    width: 57.8%;
+    margin-left: 5%;
+    height: auto;
+    background-color: #EFDAD7;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    margin-right: auto;
+    margin-bottom: 10px;
+
+}
+
+#formCrea div{
+    margin-left: 19%;
+    
+}
+
+#formCrea button{
+    width:27.5% !important;
+    text-align:center;
+    margin-left: 34.2%;
+}
+
+.labelCrea{
+    width: 58%;
+}
+
+#formCrea textArea:focus{
+    outline: none;
+    border-color: #22bb22;
+    box-shadow: 0 0 10px #22bb22;
+}
+
+#formCrea input:focus{
+    outline: none;
+    border-color: #22bb22;
+    box-shadow: 0 0 10px #22bb22;
+}
+
+/*schermi più piccoli di 1024, misura intermedia*/
+@media only screen and (max-width: 1024px)
+{
+    
+    body{
+        margin:0;
+        width: 100%;
+    }
+    
+    #titleLog{
+        width: 100%;
+        margin-top: auto;
+        text-align: center;
+    }
+    
+    #divBody{
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+    /*bacheca*/
+    .headProf{
+       width: 96% !important;
+    }
+    
+    #posts div{
+        width: 100%;
+    }
+    
+    .bodyProf{
+        width: 97% !important;
+    }
+    
+    /*login*/
+    #formLogin{
+        width: 50%;
+        height: 230px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: auto;
+    }
+    
+    #contentLog {
+     position: relative;
+     top: 40px;
+     left: 20%;
+    }
+    
+    #nomeLog, #passLog{
+        margin-bottom: 4px !important;
+    }
+    
+    
+    
+    /*profilo*/
+    #laterale{
+        width: 20%;
+    }
+    
+    #divDesc #title,#divDesc{
+        visibility:hidden;
+        width:0%;
+        height:0%;
+        margin: 0;
+        
+    }
+    
+    header{
+        height:60px;
+    }
+    
+    #desc{
+        text-align:left;
+    }
+}
+    
+
+
+/*grandezze minori uguali a 480*/
+
+@media only screen and (max-width: 480px){
+
+    body{
+        width: 100%;
+        margin: 0;
+    }
+    
+    header{
+        height:auto;
+    }
+    
+    #post{
+        width: 87%;
+    }
+
+    #divBody, nav{
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+    
+    #title{
+        visibility: hidden;
+        width: 0;
+        height: 0;
+        margin: 0;
+        padding: 0;
+    }
+    
+    #laterale{
+        visibility: hidden;
+        width: 0;
+    }
+    
+    #formProfile{
+        margin-left: 4.3%;
+        width: 90%; 
+    }
+    
+    #profile{
+        position: relative;
+        left: 13%;
+    }
+    
+    #nav li{
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+    
+    #titleLog h2{
+        font: 35px "Open Sans",Arial,sans-serif;
+    }
+    
+    #formLogin{
+        width: 65%;
+        margin-left:auto;
+        margin-right: auto;
+    }
+    
+    /*bacheca*/
+    
+    #post img{
+    max-width: 90%;
+    max-height: 70%;
+    overflow: hidden;
+    }
+    
+    .headProf{
+        width: 88% !important;
+        height: 55px;
+    }
+    
+    .bodyProf{
+        width: 93% !important;
+    }
+    
+    .profilePic{
+        width: 50px;
+        height: 50px;
+        overflow: hidden;
+    }
+    
+    .user{
+        bottom: 5px;
+    }
+    
+    /*descrizione*/
+    #desc{
+        height: auto;
+    }
+    
+    #desc li{
+        height: 45px;
+        border-right: none;
+        border-bottom: 2px solid grey;
+    }
+    
+    #desc ol, #desc li{
+        display: block !important;
+    }
+    
+    #description{
+        margin-top: 170px;
+    }
+    
+    h3{
+        line-height: normal;
+    }
+    
+    .logout{
+        float: left;
+        margin-left: 3%;
+    }
+    
+    nav{
+        width: 70%;
+    }
+    
+    #navLog, #desc{
+        width: 100%;
+    }
+    
+    #desc{
+        text-align:center;
+    }
+    
+    #navLog li{
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    
+    #formCrea div{
+        margin-left: 2%;
+    }
+    
+    #formCrea button{
+        margin-left: 5%;
+    }
+
+}
+
+    /*immagini decorative che fanno parte del sito e 
+non fanno parte dei contenuti dell'utente*/
+
+#titleLog h2:before{
+    content: url('fotoLog.png');
+    position: relative;
+    top: 5px;
+    
+}
+
+#groups h2:after{
+    content: url('add.png');
+    position: relative;
+    top: 5px;
+    left: 25px;
+}
+
+#people h3:before{
+    content:url('user.png');
+    position: relative;
+    top: 3px;
+    left: -5px;
+} 
+
+#groups h3:before{
+    content: url('friends.png');
+    position: relative;
+    top: 5px;
+    left: -5px;
+}

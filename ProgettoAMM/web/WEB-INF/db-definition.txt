@@ -1,0 +1,32 @@
+-Utente
+#id
+nome
+cognome
+urlFotoProfilo
+password
+
+
+-Post
+#id
+fk utente
+contenuto
+fk postType
+
+
+-Gruppi
+#id
+nome
+urlFotoProfilo
+
+-postType
+#id
+nome
+
+-Membri
+fk utente
+fk gruppi
+
+Utente - Post : 1 a M
+Utente - Gruppi: M a M
+Gruppi - Post : 1 a M
+Post - PostType : 1 a M

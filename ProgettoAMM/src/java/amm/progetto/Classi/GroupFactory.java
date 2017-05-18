@@ -12,6 +12,7 @@ import java.util.ArrayList;
  */
 public class GroupFactory {
     private static GroupFactory singleton;
+    private String connectionString;
     
     public static GroupFactory getInstance(){
         if(singleton==null){
@@ -26,14 +27,14 @@ public class GroupFactory {
         Group gruppo1 = new Group();
         gruppo1.setNome("Mongolfieristi");
         gruppo1.setId(0);
-        gruppo1.membri.add(0);
-        gruppo1.membri.add(2);
+        gruppo1.setMembri(0);
+        gruppo1.setMembri(2);
         
         Group gruppo2 = new Group();
         gruppo2.setNome("Ritardatari");
         gruppo2.setId(1);
-        gruppo2.membri.add(1);
-        gruppo2.membri.add(2);
+        gruppo2.setMembri(2);
+        gruppo2.setMembri(1);
         
         listaGruppi.add(gruppo1);
         listaGruppi.add(gruppo2);
@@ -62,13 +63,21 @@ public class GroupFactory {
     public ArrayList getGruppoByMembro(User utente){
         ArrayList<Group> groupList = new ArrayList();
         for(Group gruppo : listaGruppi){
-            for(Integer n : gruppo.membri){
+            for(Integer n : gruppo.getMembri()){
                 if(utente.getId() == n){
                     groupList.add(gruppo);
                 }
             }
         }
         return groupList;
+    }
+    
+    public void setConnectionString(String s){
+	this.connectionString = s;
+    }
+    
+    public String getConnectionString(){
+	return this.connectionString;
     }
     
 }

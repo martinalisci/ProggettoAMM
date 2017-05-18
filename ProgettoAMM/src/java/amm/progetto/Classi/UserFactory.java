@@ -13,6 +13,7 @@ import java.util.ArrayList;
  */
 public class UserFactory {
     private static UserFactory singleton;
+    private String connectionString;
     
     public static UserFactory getInstance(){
         if (singleton == null) {
@@ -31,6 +32,8 @@ public class UserFactory {
         utente1.setPassword("123");
         utente1.setUrlFotoProfilo("img/cappellaio.jpg");
         utente1.setId(0);
+        utente1.setUsername("cappellaio");
+        utente1.setFrase("bla bla");
         
         User utente2 = new User();
         utente2.setNome("Stregatto");
@@ -38,6 +41,8 @@ public class UserFactory {
         utente2.setPassword("123");
         utente2.setUrlFotoProfilo("img/stregatto.jpg");
         utente2.setId(1);
+        utente2.setUsername("stregatto");
+        utente2.setFrase("bla bla");
         
         User utente3 = new User();
         utente3.setNome("Pinco");
@@ -45,6 +50,8 @@ public class UserFactory {
         utente3.setPassword("123");
         utente3.setUrlFotoProfilo("img/pincopanco.jpg");
         utente3.setId(2);
+        utente3.setUsername("pincopanco");
+        utente3.setFrase("bla bla");
         
         listaUtenti.add(utente1);
         listaUtenti.add(utente2);
@@ -82,7 +89,7 @@ public class UserFactory {
     public int getIdByUserAndPassword(String username, String password){
         
         for(User utente : this.listaUtenti){
-            if(utente.getNome().equals(username) && utente.getPassword().equals(password)){
+            if(utente.getUsername().equals(username) && utente.getPassword().equals(password)){
                 return utente.getId();
             }
         }
@@ -93,6 +100,112 @@ public class UserFactory {
         return listaUtenti;
     }
     
+    public void setConnectionString(String s){
+	this.connectionString = s;
+    }
     
+    public String getConnectionString(){
+	return this.connectionString;
+    }
     
 }
+
+/*
+public User getUserById(int id){
+    try{
+        Connection conn = DriverManager.getConnection(connectionString, "adminUser","admin");
+        String query = "select * from utenti "+"where utente_id = ?";
+        PreparedStatement stmt = conn.preparedStatement(query);
+        stmt.setInt(1,id); //il primo punto di domanda viene sostituito con id
+        ResultSet res = stmt.executeQuery();
+        if(res.next()){
+            User current = new User();
+            current.setId(res.getInt("utente_id"));
+            current.setUsername(res.getString("username"));
+            current.setNome(res.getString("nome"));
+            current.setCognome(res.getString("cognome"));
+            current.setPassword(res.getString("password"));
+            current.setUrlFotoProfilo(res.getString("urlProfilo"));
+            
+            stmt.close();
+            conn.close();
+            return current;
+        }
+        stmt.close();
+        conn.close();
+    }
+    catch(SQLException e){
+        e.printStackTrace();
+    }
+    return null;
+}
+
+*/
+
+/*
+public int getIdByUserAndPassword(String username,String password){
+    try{
+        Connection conn = DriverManager.getConnection(connectionString, "adminUser","admin");
+        String query = "select utente_id from utenti "+"where username = ? and password = ?";
+        PreparedStatement stmt = conn.preparedStatement(query);
+        stmt.setString(1,username); //il primo punto di domanda viene sostituito con user       
+        stmt.setString(2,password);
+        ResultSet res = stmt.executeQuery();
+         if(res.next()){
+            User current = new User();
+            current.setId(res.getInt("utente_id"));
+            current.setNome(res.getString("nome"));
+            current.setUsername(res.getString("username"));
+            current.setCognome(res.getString("cognome"));
+            current.setPassword(res.getString("password"));
+            current.setUrlFotoProfilo(res.getString("urlProfilo"));
+            
+            stmt.close();
+            conn.close();
+            return current.utente_id;
+        }
+        stmt.close();
+        conn.close();
+    }
+}
+*/
+
+/*
+public ArrayList<User> getUserByNome(String nome){
+        ArrayList<User> userList = new ArrayList();
+        for (User utente : this.listaUtenti) {
+            if ((utente.getNome()).equals(nome)){
+                userList.add(utente);
+            }
+        }
+        return userList;
+
+        try{
+            Connection conn = DriverManager.getConnection(connectionString, "adminUser","admin");
+            String query = "select * from utenti "+"where nome = ?";
+            PreparedStatement stmt = conn.preparedStatement(query);
+            stmt.setString(1,nome);
+            ResultSet res = stmt.executeQuery();
+             if(res.next()){
+                ArrayList<User> userList = new ArrayList();
+                User current = new User();
+                current.setId(res.getInt("utente_id"));
+                current.setNome(res.getString("nome"));
+                current.setUsername(res.getString("username"));
+                current.setCognome(res.getString("cognome"));
+                current.setPassword(res.getString("password"));
+                current.setUrlFotoProfilo(res.getString("urlProfilo"));
+                userList.add(current);
+                stmt.close();
+                conn.close();
+                return userList;
+            }
+            stmt.close();
+            conn.close();
+        }
+
+
+
+    }
+
+*/

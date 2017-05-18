@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -24,6 +25,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author Martina
  */
+@WebServlet(urlPatterns = {"/bacheca.html"})
+
 public class Bacheca extends HttpServlet {
 
     /**
@@ -44,7 +47,7 @@ public class Bacheca extends HttpServlet {
         if(session!=null && 
            session.getAttribute("loggedIn")!=null &&
            session.getAttribute("loggedIn").equals(true)){
-            
+            //si procura l'utente
             String utente = request.getParameter("user");
             int utenteID;
             if(utente!=null){
@@ -53,23 +56,27 @@ public class Bacheca extends HttpServlet {
                 Integer loggedUserID = (Integer)session.getAttribute("loggedUserID");
                 utenteID = loggedUserID;
             }
-
+            
             User user = UserFactory.getInstance().getUserById(utenteID);
-            if (user!=null){
+            if (user!=null){ //se l'utente esiste
+   
+                //fa la barra laterale
                 request.setAttribute("user",user);
-                List<Post> posts = PostFactory.getInstance().getPostByUser(user);
-                request.setAttribute("posts",posts);
-                ArrayList<Group> gruppi = GroupFactory.getInstance().getGruppoByMembro(user); 
-                request.setAttribute("gruppi",gruppi);
                 ArrayList<User> utenti = UserFactory.getInstance().getListaUtenti();
                 request.setAttribute("utenti",utenti);
+                ArrayList<Group> gruppi = GroupFactory.getInstance().getGruppoByMembro(user); 
+                request.setAttribute("gruppi",gruppi);
+                List<Post> posts = PostFactory.getInstance().getPostByUser(user);
+                request.setAttribute("posts",posts);
                 request.getRequestDispatcher("bacheca.jsp").forward(request, response);
-                
-
             }
         }
         else{
-                response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+                //response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+                request.setAttribute("nonAutenticato", true);
+                request.setAttribute("logout", true);
+                request.getRequestDispatcher("login.jsp").forward(request, response);
+                return;
             }
     }
 

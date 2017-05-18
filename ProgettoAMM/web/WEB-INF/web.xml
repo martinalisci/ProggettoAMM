@@ -8,6 +8,10 @@
         <servlet-name>Bacheca</servlet-name>
         <servlet-class>amm.progetto.Bacheca</servlet-class>
     </servlet>
+      <servlet>
+        <servlet-name>Profilo</servlet-name>
+        <servlet-class>amm.progetto.Profilo</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
@@ -15,6 +19,12 @@
     <servlet-mapping>
         <servlet-name>Bacheca</servlet-name>
         <url-pattern>/Bacheca</url-pattern>
+    </servlet-mapping>
+
+  
+    <servlet-mapping>
+        <servlet-name>Profilo</servlet-name>
+        <url-pattern>/Profilo</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
@@ -24,8 +34,5 @@
     <welcome-file-list>
         <welcome-file>descrizione.html</welcome-file>
     </welcome-file-list>
-    <servlet-mapping>
-        <servlet-name>Login</servlet-name>
-        <url-pattern>/Login</url-pattern>
-    </servlet-mapping>
+   
 </web-app>
