@@ -6,8 +6,10 @@
 package amm.progetto;
 
 
+import amm.progetto.Classi.PostFactory;
 import amm.progetto.Classi.User;
 import amm.progetto.Classi.UserFactory;
+import amm.progetto.Classi.GroupFactory;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -87,7 +89,13 @@ public class Login extends HttpServlet {
                     
                     //se l'utente non ha settato nome cognome o foto va alla pagina dei dati
                     User user = UserFactory.getInstance().getUserById(loggedUserID);
-                    
+                    session.setAttribute("username", username);
+                    session.setAttribute ("password",password);
+                    session.setAttribute("utenti", UserFactory.getInstance().getListaUtenti());
+                    session.setAttribute("gruppi",GroupFactory.getInstance().getGruppoByMembro(user));
+                    session.setAttribute("user", UserFactory.getInstance().getUserById(loggedUserID));
+                    session.setAttribute("posts",PostFactory.getInstance().getPostById_destinatario(loggedUserID));
+        
                     if((user.getNome()).equals("") || 
                        (user.getUrlFotoProfilo()).equals("") || 
                        (user.getCognome()).equals("") ||

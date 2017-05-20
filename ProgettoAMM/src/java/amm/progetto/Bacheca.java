@@ -56,7 +56,7 @@ public class Bacheca extends HttpServlet {
                 Integer loggedUserID = (Integer)session.getAttribute("loggedUserID");
                 utenteID = loggedUserID;
             }
-            
+           
             User user = UserFactory.getInstance().getUserById(utenteID);
             if (user!=null){ //se l'utente esiste 
                 //fa la barra laterale e i post
