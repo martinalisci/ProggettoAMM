@@ -48,7 +48,7 @@ public class Bacheca extends HttpServlet {
            session.getAttribute("loggedIn")!=null &&
            session.getAttribute("loggedIn").equals(true)){
             //si procura l'utente
-            String utente = request.getParameter("user");
+            String utente = request.getParameter("id");
             int utenteID;
             if(utente!=null){
                 utenteID = Integer.parseInt(utente);
@@ -56,20 +56,21 @@ public class Bacheca extends HttpServlet {
                 Integer loggedUserID = (Integer)session.getAttribute("loggedUserID");
                 utenteID = loggedUserID;
             }
-           
+      
             User user = UserFactory.getInstance().getUserById(utenteID);
             if (user!=null){ //se l'utente esiste 
                 //fa la barra laterale e i post
                 request.setAttribute("user",user);
                 ArrayList<User> utenti = UserFactory.getInstance().getListaUtenti();
                 request.setAttribute("utenti",utenti);
-                ArrayList<Group> gruppi = GroupFactory.getInstance().getGruppoByMembro(user); 
-                request.setAttribute("gruppi",gruppi);
                 ArrayList<Post> posts = PostFactory.getInstance().getPostById_destinatario(utenteID);
                 request.setAttribute("posts",posts);
                 request.getRequestDispatcher("bacheca.jsp").forward(request, response);
                 
             }
+            
+      
+            
         }
         else{
                 //response.setStatus(HttpServletResponse.SC_NOT_FOUND);
