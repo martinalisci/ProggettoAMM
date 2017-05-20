@@ -30,7 +30,7 @@ public class UserFactory {
         utente1.setNome("Cappellaio");
         utente1.setCognome("Matto");
         utente1.setPassword("123");
-        utente1.setUrlFotoProfilo("img/cappellaio.jpg");
+        utente1.setUrlFotoProfilo("../img/cappellaio.jpg");
         utente1.setId(0);
         utente1.setUsername("cappellaio");
         utente1.setFrase("");
@@ -39,7 +39,7 @@ public class UserFactory {
         utente2.setNome("Stregatto");
         utente2.setCognome("Gatto");
         utente2.setPassword("123");
-        utente2.setUrlFotoProfilo("img/stregatto.jpg");
+        utente2.setUrlFotoProfilo("../img/stregatto.jpg");
         utente2.setId(1);
         utente2.setUsername("stregatto");
         utente2.setFrase("bla bla");
@@ -48,7 +48,7 @@ public class UserFactory {
         utente3.setNome("Pinco");
         utente3.setCognome("Panco");
         utente3.setPassword("123");
-        utente3.setUrlFotoProfilo("img/pincopanco.jpg");
+        utente3.setUrlFotoProfilo("../img/pincopanco.jpg");
         utente3.setId(2);
         utente3.setUsername("pincopanco");
         utente3.setFrase("bla bla");
