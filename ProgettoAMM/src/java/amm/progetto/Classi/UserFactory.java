@@ -6,6 +6,12 @@
 package amm.progetto.Classi;
 
 import java.util.ArrayList;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
@@ -30,7 +36,7 @@ public class UserFactory {
         utente1.setNome("Cappellaio");
         utente1.setCognome("Matto");
         utente1.setPassword("123");
-        utente1.setUrlFotoProfilo("../img/cappellaio.jpg");
+        utente1.setUrlFotoProfilo("../../../img/cappellaio.jpg");
         utente1.setId(0);
         utente1.setUsername("cappellaio");
         utente1.setFrase("");
@@ -58,16 +64,16 @@ public class UserFactory {
         listaUtenti.add(utente3);
     }
     
-    public User getUserById(int id) {
+  /*  public User getUserById(int id) {
         for (User utente : this.listaUtenti) {
             if (utente.getId() == id) {
                 return utente;
             }
         }
         return null;
-    }
+    }*/
     
-    public ArrayList<User> getUserByNome(String nome){
+ /*   public ArrayList<User> getUserByNome(String nome){
         ArrayList<User> userList = new ArrayList();
         for (User utente : this.listaUtenti) {
             if ((utente.getNome()).equals(nome)){
@@ -75,18 +81,18 @@ public class UserFactory {
             }
         }
         return userList;
-    }
+    }*/
     
-    public ArrayList<User> getUserByCognome(String cognome){
+   /* public ArrayList<User> getUserByCognome(String cognome){
         ArrayList<User> userList = new ArrayList();
         for (User utente : this.listaUtenti) {
             if ((utente.getCognome()).equals(cognome))
                 userList.add(utente);
         }
         return userList;
-    }
+    }*/
     
-    public int getIdByUserAndPassword(String username, String password){
+  /*  public int getIdByUserAndPassword(String username, String password){
         
         for(User utente : this.listaUtenti){
             if(utente.getUsername().equals(username) && utente.getPassword().equals(password)){
@@ -94,7 +100,7 @@ public class UserFactory {
             }
         }
         return -1;
-    }
+    }*/
     
     public ArrayList getListaUtenti(){
         return listaUtenti;
@@ -108,14 +114,14 @@ public class UserFactory {
 	return this.connectionString;
     }
     
-}
 
-/*
+
+
 public User getUserById(int id){
     try{
         Connection conn = DriverManager.getConnection(connectionString, "adminUser","admin");
         String query = "select * from utenti "+"where utente_id = ?";
-        PreparedStatement stmt = conn.preparedStatement(query);
+        PreparedStatement stmt = conn.prepareStatement(query);
         stmt.setInt(1,id); //il primo punto di domanda viene sostituito con id
         ResultSet res = stmt.executeQuery();
         if(res.next()){
@@ -140,72 +146,27 @@ public User getUserById(int id){
     return null;
 }
 
-*/
-
-/*
 public int getIdByUserAndPassword(String username,String password){
     try{
         Connection conn = DriverManager.getConnection(connectionString, "adminUser","admin");
         String query = "select utente_id from utenti "+"where username = ? and password = ?";
-        PreparedStatement stmt = conn.preparedStatement(query);
+        PreparedStatement stmt = conn.prepareStatement(query);
         stmt.setString(1,username); //il primo punto di domanda viene sostituito con user       
         stmt.setString(2,password);
         ResultSet res = stmt.executeQuery();
          if(res.next()){
-            User current = new User();
-            current.setId(res.getInt("utente_id"));
-            current.setNome(res.getString("nome"));
-            current.setUsername(res.getString("username"));
-            current.setCognome(res.getString("cognome"));
-            current.setPassword(res.getString("password"));
-            current.setUrlFotoProfilo(res.getString("urlProfilo"));
-            
+            int id = res.getInt("utente_id");
             stmt.close();
             conn.close();
-            return current.utente_id;
+            return id;
         }
         stmt.close();
         conn.close();
     }
-}
-*/
-
-/*
-public ArrayList<User> getUserByNome(String nome){
-        ArrayList<User> userList = new ArrayList();
-        for (User utente : this.listaUtenti) {
-            if ((utente.getNome()).equals(nome)){
-                userList.add(utente);
-            }
-        }
-        return userList;
-
-        try{
-            Connection conn = DriverManager.getConnection(connectionString, "adminUser","admin");
-            String query = "select * from utenti "+"where nome = ?";
-            PreparedStatement stmt = conn.preparedStatement(query);
-            stmt.setString(1,nome);
-            ResultSet res = stmt.executeQuery();
-             if(res.next()){
-                ArrayList<User> userList = new ArrayList();
-                User current = new User();
-                current.setId(res.getInt("utente_id"));
-                current.setNome(res.getString("nome"));
-                current.setUsername(res.getString("username"));
-                current.setCognome(res.getString("cognome"));
-                current.setPassword(res.getString("password"));
-                current.setUrlFotoProfilo(res.getString("urlProfilo"));
-                userList.add(current);
-                stmt.close();
-                conn.close();
-                return userList;
-            }
-            stmt.close();
-            conn.close();
-        }
-
-
-
+    catch(SQLException e){
+        e.printStackTrace();
     }
+    return -1;
+}
 
-*/
+}
