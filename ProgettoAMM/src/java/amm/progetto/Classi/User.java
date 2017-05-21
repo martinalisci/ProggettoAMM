@@ -128,5 +128,12 @@ public class User {
     public void setUrlFotoProfilo(String urlFotoProfilo) {
         this.urlFotoProfilo = urlFotoProfilo;
     }
+    
+    @Override
+    public boolean equals(Object altroUtente) {
+        if (altroUtente instanceof User)
+            if (this.getId() == ((User)altroUtente).getId()) return true;
+        return false;
+    }
   
 }

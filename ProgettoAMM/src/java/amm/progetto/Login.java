@@ -11,6 +11,8 @@ import amm.progetto.Classi.User;
 import amm.progetto.Classi.UserFactory;
 import amm.progetto.Classi.GroupFactory;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -22,8 +24,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author Martina
  */
-@WebServlet(urlPatterns = {"/login.html"})
-/*,loadOnStartup = 0*/
+@WebServlet(name = "Login",urlPatterns = {"/login.html"},loadOnStartup = 0)
+
 public class Login extends HttpServlet {
 
     /**
@@ -35,7 +37,7 @@ public class Login extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
- /*   private static final String JDBC_DRIVER = "org.apache.derby.jdbc.EmbeddedDriver";
+    private static final String JDBC_DRIVER = "org.apache.derby.jdbc.EmbeddedDriver";
     private static final String DB_CLEAN_PATH = "../../web/WEB-INF/db/ammdb";
     private static final String DB_BUILD_PATH = "WEB-INF/db/ammdb";
     
@@ -52,7 +54,7 @@ public class Login extends HttpServlet {
        PostFactory.getInstance().setConnectionString(dbConnection);
        GroupFactory.getInstance().setConnectionString(dbConnection);
    }
- */   
+   
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -94,7 +96,7 @@ public class Login extends HttpServlet {
                     session.setAttribute("utenti", UserFactory.getInstance().getListaUtenti());
                     session.setAttribute("gruppi",GroupFactory.getInstance().getGruppoByMembro(user));
                     session.setAttribute("user", UserFactory.getInstance().getUserById(loggedUserID));
-                    session.setAttribute("posts",PostFactory.getInstance().getPostById_destinatario(loggedUserID));
+                    session.setAttribute("posts",PostFactory.getInstance().getPostByAutore(user));
         
                     if((user.getNome()).equals("") || 
                        (user.getUrlFotoProfilo()).equals("") || 

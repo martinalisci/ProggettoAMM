@@ -10,49 +10,51 @@ package amm.progetto.Classi;
  * @author Martina
  */
 public class Post {
+
+    /**
+     * @return the id
+     */
+    public int getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    /**
+     * @return the autore
+     */
+    public User getAutore() {
+        return autore;
+    }
+
+    /**
+     * @param autore the autore to set
+     */
+    public void setAutore(User autore) {
+        this.autore = autore;
+    }
      public enum Type {
         TEXT, IMAGE
     };
     
-    private int id_destinatario;
-    private int id_autore;
+    private int id;
+    private User autore;
     private String contenuto;
     private Type postType;
     
     public Post() {
-        id_destinatario = -1;
-        id_autore = -1;
+        id = -1;
+        autore = null;
         contenuto = "";
         postType = Type.TEXT;
     }
 
-       /**
-     * @return the id_destinatario
-     */
-    public int getId_destinatario() {
-        return id_destinatario;
-    }
 
-    /**
-     * @param id_destinatario the id_destinatario to set
-     */
-    public void setId_destinatario(int id_destinatario) {
-        this.id_destinatario = id_destinatario;
-    }
-
-    /**
-     * @return the id_autore
-     */
-    public int getId_autore() {
-        return id_autore;
-    }
-
-    /**
-     * @param id_autore the id_autore to set
-     */
-    public void setId_autore(int id_autore) {
-        this.id_autore = id_autore;
-    }
 
     /**
      * @return the contenuto

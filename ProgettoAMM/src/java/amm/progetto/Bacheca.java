@@ -63,15 +63,43 @@ public class Bacheca extends HttpServlet {
                 request.setAttribute("user",user);
                 ArrayList<User> utenti = UserFactory.getInstance().getListaUtenti();
                 request.setAttribute("utenti",utenti);
-                ArrayList<Post> posts = PostFactory.getInstance().getPostById_destinatario(utenteID);
+                ArrayList<Post> posts = PostFactory.getInstance().getPostByAutore(UserFactory.getInstance().getUserById(utenteID));
                 request.setAttribute("posts",posts);
+                request.getRequestDispatcher("bacheca.jsp").forward(request, response);  
+            }
+            
+            if(request.getParameter("thereIsPost")!=null){
+              
+                String thereIsPost = request.getParameter("thereIsPost");
+                String content = request.getParameter("textPost");
+                String type = request.getParameter("postType");
+                if(thereIsPost.equals("needConfirm")){
+                    request.setAttribute("content", content);
+                    request.setAttribute("typePost", type);
+                    request.setAttribute("newpost", "true");
+                    request.getRequestDispatcher("bacheca.jsp").forward(request, response);
+                    return;
+                }
+                else{
+                    //salvo
+                    Post post = new Post();
+                    post.setContenuto(content);
+                    if(type.equals("textType"))
+                        post.setPostType(Post.Type.TEXT);
+                    else{
+                        post.setPostType(Post.Type.IMAGE);
+                        //Integer loggedUserID = (Integer)session.getAttribute("loggedUserID");
+                        post.setAutore(user);
+                        PostFactory.getInstance().addPost(post);
+                        request.getRequestDispatcher("Bacheca").forward(request, response);
+                    }
+                }
+            }
+            else{
                 request.getRequestDispatcher("bacheca.jsp").forward(request, response);
                 
             }
-            
-      
-            
-        }
+        }    
         else{
                 //response.setStatus(HttpServletResponse.SC_NOT_FOUND);
                 request.setAttribute("nonAutenticato", true);

@@ -5,6 +5,11 @@
  */
 package amm.progetto.Classi;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 
@@ -23,64 +28,107 @@ public class PostFactory {
         return singleton;
     }
     
-    private ArrayList<Post> listaPost = new ArrayList<Post>();
-    
-    private PostFactory(){
-        UserFactory userFactory = UserFactory.getInstance();
-        
-        Post post1 = new Post();
-        post1.setContenuto("bla bla bla");
-        post1.setId_destinatario(0);
-        post1.setId_autore(0);
-        post1.setPostType(Post.Type.TEXT);
-        
-        Post post2 = new Post();
-        post2.setContenuto("img/cibo.jpg");
-        post2.setId_destinatario(1);
-        post2.setId_autore(1);
-        post2.setPostType(Post.Type.IMAGE);
-        
-        Post post3 = new Post();
-        post3.setContenuto("http://it.wikihow.com/Creare-un-Cappello");
-        post3.setId_destinatario(2);
-        post3.setId_autore(2);
-        post3.setPostType(Post.Type.TEXT);
-        
-        listaPost.add(post1);
-        listaPost.add(post2);
-        listaPost.add(post3);
-    }
-    
-    public ArrayList<Post> getPostById_destinatario(int id){
-        ArrayList<Post> postList = new ArrayList();
-        for(Post post : listaPost){
-            if(post.getId_destinatario() == id){
-               postList.add(post);
-            }
-        }
-        return postList;
-    }
-    
-    public ArrayList <Post> getPostById_autore(int id){
-        ArrayList<Post> postList = new ArrayList();
-        for(Post post : listaPost){
-            if(post.getId_autore() == id){
-               postList.add(post);
-            }
-        }
-        return postList;
-    }
-    
-    public void addPost(Post post){
-        listaPost.add(post);
-    }
-    
-    public void setConnectionString(String s){
+     public void setConnectionString(String s){
 	this.connectionString = s;
     }
     
     public String getConnectionString(){
 	return this.connectionString;
+    }
+  
+    private PostFactory(){
+    }
+   
+    public ArrayList <Post> getPostByAutore(User usr){
+        ArrayList<Post> listaPost = new ArrayList<Post>();
+        
+        try {
+            // path, username, password
+            Connection conn = DriverManager.getConnection(connectionString, "adminUser", "admin");
+            
+            String query = 
+                      "select * from posts "
+                    + "join posttype on posts.type = posttype.posttype_id "
+                    + "where author = ?";
+            
+            // Prepared Statement
+            PreparedStatement stmt = conn.prepareStatement(query);
+            
+            // Si associano i valori
+            stmt.setInt(1, usr.getId());
+            
+            // Esecuzione query
+            ResultSet res = stmt.executeQuery();
+
+            // ciclo sulle righe restituite
+            while (res.next()) {
+                
+                Post current = new Post();
+                //imposto id del post
+                current.setId(res.getInt("post_id"));
+                
+                //impost il contenuto del post
+                current.setContenuto(res.getString("contenuto"));
+                
+                //imposto il tipo del post
+                current.setPostType(this.postTypeFromString(res.getString("posttype_name")));
+
+                //imposto l'autore del post
+                current.setAutore(usr);
+                
+                listaPost.add(current);
+            }
+
+            stmt.close();
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return listaPost;
+    }
+    
+    public void addPost(Post post){
+        try {
+            // path, username, password
+            Connection conn = DriverManager.getConnection(connectionString, "adminUser", "admin");
+            
+            String query = 
+                      "insert into posts (post_id, contenuto, type, author) "
+                    + "values (default, ? , ? , ? )";
+            
+            // Prepared Statement
+            PreparedStatement stmt = conn.prepareStatement(query);
+            
+            // Si associano i valori
+            stmt.setString(1, post.getContenuto());
+
+            stmt.setInt(2, this.postTypeFromEnum(post.getPostType()));
+            
+            stmt.setInt(3, post.getAutore().getId());
+            
+            // Esecuzione query
+            stmt.executeUpdate();
+        }
+        catch(SQLException e){
+            e.printStackTrace();
+        }
+    }
+ 
+     private Post.Type postTypeFromString(String type){
+        
+        if(type.equals("IMAGE"))
+            return Post.Type.IMAGE;
+        
+        return Post.Type.TEXT;
+    }
+    
+    private int postTypeFromEnum(Post.Type type){
+        //È realizzabile in modo più robusto rispetto all'hardcoding degli indici
+        if(type == Post.Type.TEXT)
+                return 1;
+            else
+                return 2;
     }
     
 }

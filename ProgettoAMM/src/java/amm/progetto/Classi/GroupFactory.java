@@ -4,6 +4,11 @@
  * and open the template in the editor.
  */
 package amm.progetto.Classi;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -21,58 +26,7 @@ public class GroupFactory {
         return singleton;
     }
     
-    private ArrayList<Group> listaGruppi = new ArrayList<Group>();
-    
-    private GroupFactory(){
-        Group gruppo1 = new Group();
-        gruppo1.setNome("Mongolfieristi");
-        gruppo1.setId(0);
-        gruppo1.setMembri(0);
-        gruppo1.setMembri(2);
-        
-        Group gruppo2 = new Group();
-        gruppo2.setNome("Ritardatari");
-        gruppo2.setId(1);
-        gruppo2.setMembri(2);
-        gruppo2.setMembri(1);
-        
-        listaGruppi.add(gruppo1);
-        listaGruppi.add(gruppo2);
-        
-    }
-    
-    public Group getGruppoById(int id){
-        for(Group gruppo : listaGruppi){
-            if(gruppo.getId() == id){
-                return gruppo;
-            }
-        }
-        return null;
-    }  
-    
-    public ArrayList getGruppoByNome(String nome){
-        ArrayList<Group> groupList = new ArrayList();
-        for(Group gruppo : listaGruppi){
-            if((gruppo.getNome()).equals(nome)){
-                groupList.add(gruppo);
-            }
-        }
-        return groupList;
-    }
-    
-    public ArrayList getGruppoByMembro(User utente){
-        ArrayList<Group> groupList = new ArrayList();
-        for(Group gruppo : listaGruppi){
-            for(Integer n : gruppo.getMembri()){
-                if(utente.getId() == n){
-                    groupList.add(gruppo);
-                }
-            }
-        }
-        return groupList;
-    }
-    
-    public void setConnectionString(String s){
+     public void setConnectionString(String s){
 	this.connectionString = s;
     }
     
@@ -80,4 +34,35 @@ public class GroupFactory {
 	return this.connectionString;
     }
     
+    private GroupFactory(){ 
+    }
+
+    public ArrayList getGruppoByMembro(User utente){
+        ArrayList<Group> groupList = new ArrayList();
+        try{
+            Connection conn = DriverManager.getConnection(connectionString, "adminUser","admin");
+            String query = "select * from gruppi "+
+                    "join gruppi on membri.id_gruppo = gruppi.gruppo_id"
+                    +"join utenti on membri.id_utente = utenti.utente_id"
+                    +"where utente_id = ?";
+            PreparedStatement stmt = conn.prepareStatement(query);
+            stmt.setInt(1,utente.getId()); //il primo punto di domanda viene sostituito con id
+            ResultSet res = stmt.executeQuery();
+            if(res.next()){
+                Group current = new Group();
+                current.setId(res.getInt("gruppo_id"));
+                current.setNome(res.getString("nome"));
+                current.setUrlFoto(res.getString("urlFotoProfilo"));
+
+                groupList.add(current);
+            }
+            stmt.close();
+            conn.close();
+        }
+        catch(SQLException e){
+            e.printStackTrace();
+        }
+        return groupList;
+    }
+ 
 }
