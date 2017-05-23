@@ -25,7 +25,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author Martina
  */
-@WebServlet(urlPatterns = {"/bacheca.html"})
+/*@WebServlet(urlPatterns = {"/bacheca.html"})*/
 
 public class Bacheca extends HttpServlet {
 

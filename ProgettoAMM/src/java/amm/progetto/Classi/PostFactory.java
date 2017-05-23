@@ -44,7 +44,7 @@ public class PostFactory {
         
         try {
             // path, username, password
-            Connection conn = DriverManager.getConnection(connectionString, "adminUser", "admin");
+            Connection conn = DriverManager.getConnection(connectionString, "ammdb", "ammdb");
             
             String query = 
                       "select * from posts "
@@ -91,7 +91,7 @@ public class PostFactory {
     public void addPost(Post post){
         try {
             // path, username, password
-            Connection conn = DriverManager.getConnection(connectionString, "adminUser", "admin");
+            Connection conn = DriverManager.getConnection(connectionString, "ammdb", "ammdb");
             
             String query = 
                       "insert into posts (post_id, contenuto, type, author) "

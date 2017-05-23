@@ -14,13 +14,13 @@ public class Group {
 
     private int id;
     private String nome;
-    private String urlFoto;
+    private String urlFotoProfilo;
     private ArrayList<Integer> membri;
     
     public Group(){
         id = 0;
         nome = "";
-        urlFoto = "";
+        urlFotoProfilo = "";
         membri = new ArrayList<>();
     }
     
@@ -55,15 +55,15 @@ public class Group {
     /**
      * @return the urlFoto
      */
-    public String getUrlFoto() {
-        return urlFoto;
+    public String getUrlFotoProfilo() {
+        return urlFotoProfilo;
     }
 
     /**
      * @param urlFoto the urlFoto to set
      */
-    public void setUrlFoto(String urlFoto) {
-        this.urlFoto = urlFoto;
+    public void setUrlFotoProfilo(String urlFoto) {
+        this.urlFotoProfilo = urlFoto;
     }
     
      /**

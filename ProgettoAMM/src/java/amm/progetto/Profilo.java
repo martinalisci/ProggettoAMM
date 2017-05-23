@@ -23,7 +23,7 @@ import javax.servlet.http.HttpSession;
  * @author Martina
  */
 
-@WebServlet(urlPatterns = {"/profilo.html"})
+/*@WebServlet(urlPatterns = {"/profilo.html"})*/
 public class Profilo extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

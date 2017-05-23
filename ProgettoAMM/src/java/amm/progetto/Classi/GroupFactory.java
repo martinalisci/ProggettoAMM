@@ -40,19 +40,23 @@ public class GroupFactory {
     public ArrayList getGruppoByMembro(User utente){
         ArrayList<Group> groupList = new ArrayList();
         try{
-            Connection conn = DriverManager.getConnection(connectionString, "adminUser","admin");
+            Connection conn = DriverManager.getConnection(connectionString, "ammdb","ammdb");
             String query = "select * from gruppi "+
-                    "join gruppi on membri.id_gruppo = gruppi.gruppo_id"
-                    +"join utenti on membri.id_utente = utenti.utente_id"
+                    "join gruppi on membri.id_gruppo = gruppi.gruppo_id "
+                    +"join utenti on membri.id_utente = utenti.utente_id "
                     +"where utente_id = ?";
+          /* String query = "select gruppo.* from gruppo, membri, utente "+
+                            "where gruppo.gruppo_id = membri.id_gruppo " +
+                            "and membri.id_utente = utente.utente_id " +
+                            "and utente.utente_id = ?";*/
             PreparedStatement stmt = conn.prepareStatement(query);
             stmt.setInt(1,utente.getId()); //il primo punto di domanda viene sostituito con id
             ResultSet res = stmt.executeQuery();
-            if(res.next()){
+            while(res.next()){
                 Group current = new Group();
                 current.setId(res.getInt("gruppo_id"));
                 current.setNome(res.getString("nome"));
-                current.setUrlFoto(res.getString("urlFotoProfilo"));
+                current.setUrlFotoProfilo(res.getString("urlFotoProfilo"));
 
                 groupList.add(current);
             }

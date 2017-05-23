@@ -42,7 +42,7 @@ public class UserFactory {
         
         try {
             // path, username, password
-            Connection conn = DriverManager.getConnection(connectionString, "adminUser", "admin");
+            Connection conn = DriverManager.getConnection(connectionString, "ammdb", "ammdb");
             
             String query = "select * from utenti ";
             
@@ -74,8 +74,8 @@ public class UserFactory {
 
     public User getUserById(int id){
         try{
-            Connection conn = DriverManager.getConnection(connectionString, "adminUser","admin");
-            String query = "select * from utenti "+"where utente_id = ?";
+            Connection conn = DriverManager.getConnection(connectionString, "ammdb","ammdb");
+            String query = "select * from utenti " + "where utente_id = ?";
             PreparedStatement stmt = conn.prepareStatement(query);
             stmt.setInt(1,id); //il primo punto di domanda viene sostituito con id
             ResultSet res = stmt.executeQuery();
@@ -86,7 +86,7 @@ public class UserFactory {
                 current.setNome(res.getString("nome"));
                 current.setCognome(res.getString("cognome"));
                 current.setPassword(res.getString("password"));
-                current.setUrlFotoProfilo(res.getString("urlProfilo"));
+                current.setUrlFotoProfilo(res.getString("urlFotoProfilo"));
 
                 stmt.close();
                 conn.close();
@@ -94,34 +94,33 @@ public class UserFactory {
             }
             stmt.close();
             conn.close();
-        }
-        catch(SQLException e){
+        }catch(SQLException e){
             e.printStackTrace();
         }
         return null;
     }
 
-public int getIdByUserAndPassword(String username,String password){
-    try{
-        Connection conn = DriverManager.getConnection(connectionString, "adminUser","admin");
-        String query = "select utente_id from utenti "+"where username = ? and password = ?";
-        PreparedStatement stmt = conn.prepareStatement(query);
-        stmt.setString(1,username); //il primo punto di domanda viene sostituito con user       
-        stmt.setString(2,password);
-        ResultSet res = stmt.executeQuery();
-         if(res.next()){
-            int id = res.getInt("utente_id");
+    public int getIdByUserAndPassword(String username,String password){
+        try{
+            Connection conn = DriverManager.getConnection(connectionString, "ammdb","ammdb");
+            String query = "select utente_id from utenti "+"where username = ? and password = ?";
+            PreparedStatement stmt = conn.prepareStatement(query);
+            stmt.setString(1,username); //il primo punto di domanda viene sostituito con user       
+            stmt.setString(2,password);
+            ResultSet res = stmt.executeQuery();
+             if(res.next()){
+                int id = res.getInt("utente_id");
+                stmt.close();
+                conn.close();
+                return id;
+
+            }
             stmt.close();
             conn.close();
-            return id;
+        }catch(SQLException e){
+            e.printStackTrace();
         }
-        stmt.close();
-        conn.close();
+        return -1;
     }
-    catch(SQLException e){
-        e.printStackTrace();
-    }
-    return -1;
-}
 
 }

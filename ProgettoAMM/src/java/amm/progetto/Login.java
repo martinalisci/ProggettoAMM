@@ -24,7 +24,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author Martina
  */
-@WebServlet(name = "Login",urlPatterns = {"/login.html"},loadOnStartup = 0)
+@WebServlet(/*name = "Login",urlPatterns = {"/login.html"},*/loadOnStartup = 0)
 
 public class Login extends HttpServlet {
 
@@ -76,7 +76,7 @@ public class Login extends HttpServlet {
             request.getRequestDispatcher("bacheca.jsp").forward(request, response);
             return;
         
-        //Se l'utente non è loggato...
+        //Se l'utente non è loggato
         } else {
             String username = request.getParameter("username");
             String password = request.getParameter("password");
