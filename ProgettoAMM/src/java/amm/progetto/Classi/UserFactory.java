@@ -56,10 +56,10 @@ public class UserFactory {
                 User current = new User();
                 current.setId(res.getInt("utente_id"));
                 current.setNome(res.getString("nome"));
-                current.setCognome("cognome");
-                current.setUsername("username");
-                current.setPassword("password");
-                current.setUrlFotoProfilo("urlFotoProfilo");
+                current.setCognome(res.getString("cognome"));
+                current.setUsername(res.getString("username"));
+                current.setPassword(res.getString("password"));
+                current.setUrlFotoProfilo(res.getString("urlFotoProfilo"));
                 
                 listaUtenti.add(current);
             }
@@ -103,7 +103,7 @@ public class UserFactory {
     public int getIdByUserAndPassword(String username,String password){
         try{
             Connection conn = DriverManager.getConnection(connectionString, "ammdb","ammdb");
-            String query = "select utente_id from utenti "+"where username = ? and password = ?";
+            String query = "select utente_id from utenti " + "where username = ? and password = ?";
             PreparedStatement stmt = conn.prepareStatement(query);
             stmt.setString(1,username); //il primo punto di domanda viene sostituito con user       
             stmt.setString(2,password);

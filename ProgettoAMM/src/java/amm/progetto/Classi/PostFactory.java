@@ -48,7 +48,7 @@ public class PostFactory {
             
             String query = 
                       "select * from posts "
-                    + "join posttype on posts.type = posttype.posttype_id "
+                    + "join posttype on posts.type = posttype_id " //spazio
                     + "where author = ?";
             
             // Prepared Statement
@@ -71,7 +71,7 @@ public class PostFactory {
                 current.setContenuto(res.getString("contenuto"));
                 
                 //imposto il tipo del post
-                current.setPostType(this.postTypeFromString(res.getString("posttype_name")));
+                current.setPostType(this.postTypeFromString(res.getString("posttype_nome")));
 
                 //imposto l'autore del post
                 current.setAutore(usr);
