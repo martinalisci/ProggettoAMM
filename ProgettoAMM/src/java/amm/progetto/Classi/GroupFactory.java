@@ -41,14 +41,14 @@ public class GroupFactory {
         ArrayList<Group> groupList = new ArrayList();
         try{
             Connection conn = DriverManager.getConnection(connectionString, "ammdb","ammdb");
-            String query = "select * from gruppi "+
+            /*String query = "select * from gruppi "+
                     "join gruppi on membri.id_gruppo = gruppi.gruppo_id "
                     +"join utenti on membri.id_utente = utenti.utente_id "
-                    +"where utente_id = ?";
-          /* String query = "select gruppo.* from gruppo, membri, utente "+
+                    +"where utente_id = ?";*/
+           String query = "select gruppo.* from gruppo, membri, utente "+
                             "where gruppo.gruppo_id = membri.id_gruppo " +
                             "and membri.id_utente = utente.utente_id " +
-                            "and utente.utente_id = ?";*/
+                            "and utente.utente_id = ?";
             PreparedStatement stmt = conn.prepareStatement(query);
             stmt.setInt(1,utente.getId()); //il primo punto di domanda viene sostituito con id
             ResultSet res = stmt.executeQuery();
